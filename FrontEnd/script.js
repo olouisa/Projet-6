@@ -40,7 +40,13 @@ fetch("http://localhost:5678/api/works", {
     }
 })
     .then(response => response.json())
-    .then(response2 => console.log(response2))
+    .then(response2 => {console.log(response2);
+   const img = document.createElement("img");
+    let figure = document.getElementsByTagName("figure");
+
+    img.src = response2.imageUrl;
+    figure.appendChild(img);
+    console.log(img)})
 
 // Route Works avec la méthode POST:
 fetch("http://localhost:5678/api/works", {
