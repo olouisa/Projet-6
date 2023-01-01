@@ -44,18 +44,18 @@ fetch("http://localhost:5678/api/works", {
         console.log(response2);
         const Array2 = response2.map(function (e) {
         const img = document.createElement("img");
-        img.src = response2.imageUrl;
-        console.log(img.src);
-
         const gallery = document.querySelector(".gallery");
         console.log(gallery);
-
         gallery.innerHTML = '';
+        
+        img.setAttribute("src", response2.imageUrl);
+        console.log(img.setAttribute);     
+
 
         gallery.appendChild(img);
         console.log(gallery.appendChild(img));
 
-        })
+        });
         // img.src = response2.imageUrl;
         // console.log(img);
         // console.log(img.src);
@@ -69,7 +69,7 @@ fetch("http://localhost:5678/api/works", {
 
         // gallery.appendChild(img);
         // console.log(gallery.appendChild(img));
-    })
+    });
 
 // Route Works avec la méthode POST:
 // fetch("http://localhost:5678/api/works", {
