@@ -36,7 +36,10 @@ fetch("http://localhost:5678/api/categories", {
 
 fetch("http://localhost:5678/api/works", {
     headers: {
+        
         'Accept': 'application/json'
+
+        
     }
 })
     .then(response => response.json())
@@ -51,36 +54,17 @@ fetch("http://localhost:5678/api/works", {
             let gallery = document.querySelector(".gallery");
             console.log(gallery);
             gallery.appendChild(img);
-            console.log(gallery.appendChild(img));
 
             gallery.appendChild(titre);
-            console.log(gallery.appendChild(titre));
+        
             titre.innerHTML = response2[i].title;
 
             img.setAttribute("src", response2[i].imageUrl);
-            // img.setAttribute("alt", response2[i].altTxt);
+            img.setAttribute("crossorigin", "anonymous");
             console.log(img.setAttribute);
 
         }
-        // const Array2 = response2.map(function (e) {
-        // const img = document.createElement("img");
-        // const gallery = document.querySelector(".gallery");
-        // console.log(gallery);
-        // gallery.innerHTML = '';
-
-        // img.setAttribute("src", "response2.imageUrl");
-        // console.log(img.setAttribute);     
-
-
-        // gallery.appendChild(img);
-        // console.log(gallery.appendChild(img));
-
-        // });
-
-
-
-
-
+      
     });
 
 // Route Works avec la méthode POST:
