@@ -36,10 +36,10 @@ fetch("http://localhost:5678/api/categories", {
 
 fetch("http://localhost:5678/api/works", {
     headers: {
-        
+
         'Accept': 'application/json'
 
-        
+
     }
 })
     .then(response => response.json())
@@ -50,21 +50,22 @@ fetch("http://localhost:5678/api/works", {
         for (let i = 0; i < tab; i++) {
 
             const img = document.createElement("img");
-            const titre = document.createElement("p");
-            let gallery = document.querySelector(".gallery");
-            console.log(gallery);
-            gallery.appendChild(img);
-
-            gallery.appendChild(titre);
-        
-            titre.innerHTML = response2[i].title;
-
             img.setAttribute("src", response2[i].imageUrl);
             img.setAttribute("crossorigin", "anonymous");
-            console.log(img.setAttribute);
+
+
+            const titre = document.createElement("p");
+            titre.innerHTML = response2[i].title;
+
+            let gallery = document.querySelector(".gallery");
+
+            const figure = document.createElement("div");
+            gallery.appendChild(figure);
+            figure.appendChild(img);
+            figure.appendChild(titre);
 
         }
-      
+
     });
 
 // Route Works avec la méthode POST:
