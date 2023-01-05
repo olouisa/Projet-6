@@ -23,14 +23,43 @@ fetch("http://localhost:5678/api/categories", {
 })
     .then(response => response.json()
     )
-    .then(response2 => {
-        console.log(response2)
+    .then(response1 => {
+        console.log(response1)
+
+
+        // let catégories = response1.length;
+        // console.log(catégories);
+        // let resultatDuFiltre = response1.filter(then(response1) {
+        //     for
+        // })
+
+
+
+
+        // function filtrerLesCatégories() {
+        //     let resultatDuFiltre = response2.filter(function(catégorie) {
+        //         // for (i = 0; i < catégorie.response2.lenght; i++) 
+        //         //     if 
+
+
+
+        // });
+        // console.log(resultatDuFiltre);
+
+
+        // }
+
+
+
         // const MesProjets = document.querySelector("#portfolio h2");
         // console.log(MesProjets);
 
         // const filtre = document.createElement("div");
         // MesProjets.appendChild(filtre);
-        // filtre.textContent = "test";
+
+
+
+
 
         // const btnTous = document.createElement("button");
         // filtre.appendChild(btnTous);
@@ -42,14 +71,21 @@ fetch("http://localhost:5678/api/categories", {
         // });
         // console.log(resultatDuFiltre);
 
-        const boutons = document.querySelectorAll("#filtre button");
-        console.log(boutons);
+        // const boutons = document.querySelectorAll("#filtre button");
+        // console.log(boutons);
 
-        function filtrerLesCatégories
+
+
+
+
+
+
+
+
+
+
+
         // boutons.addEventListener("click", function);
-
-
-
 
     });
 
@@ -85,7 +121,21 @@ fetch("http://localhost:5678/api/works", {
             figure.appendChild(img);
             figure.appendChild(titre);
 
+            // Filtrage test
+
+            const resultatDuFiltre = response2.filter(function (catégorie) {
+                if (catégorie.categroryId != 3 ) {
+                    return false
+                } 
+
+                console.log(catégorie);
+
+
+            })
+            console.log(resultatDuFiltre);
+
         }
+
 
     });
 
