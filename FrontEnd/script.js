@@ -23,15 +23,36 @@ fetch("http://localhost:5678/api/categories", {
 })
     .then(response => response.json()
     )
-    .then(response2 =>
+    .then(response2 => {
         console.log(response2)
-    )
-// .then((response)=>{
-// console.log(response.json());
-// })
-// .then((response2) =>{
-//     console.log(response2);
-// })
+        // const MesProjets = document.querySelector("#portfolio h2");
+        // console.log(MesProjets);
+
+        // const filtre = document.createElement("div");
+        // MesProjets.appendChild(filtre);
+        // filtre.textContent = "test";
+
+        // const btnTous = document.createElement("button");
+        // filtre.appendChild(btnTous);
+        // console.log(filtre);
+
+        // let resultatDuFiltre = response2.filter(function(catégorie) {
+
+
+        // });
+        // console.log(resultatDuFiltre);
+
+        const boutons = document.querySelectorAll("#filtre button");
+        console.log(boutons);
+
+        function filtrerLesCatégories
+        // boutons.addEventListener("click", function);
+
+
+
+
+    });
+
 
 
 fetch("http://localhost:5678/api/works", {
