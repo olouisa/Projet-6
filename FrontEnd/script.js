@@ -123,21 +123,25 @@ fetch("http://localhost:5678/api/works", {
 
             // Filtrage test
 
-            const resultatDuFiltre = response2.filter(function (catégorie) {
-                if (catégorie.categroryId != 3 ) {
-                    return false
-                } 
+            // 1- Appeler  le bouton
+            const btnobjets = document.querySelector(".objets");
+            // 2 - Appeler l'évènement click sur le bouton 
+            btnobjets.addEventListener("click", function() {
+                filtreobjets = response2.filter( function(objet) {
+                    return objet.categoryId == 2
+                })
+                console.log(filtreobjets);
+            });
 
-                console.log(catégorie);
-
-
-            })
-            console.log(resultatDuFiltre);
+            // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
 
         }
 
 
-    });
+
+
+        });
+
 
 // Route Works avec la méthode POST:
 // fetch("http://localhost:5678/api/works", {
