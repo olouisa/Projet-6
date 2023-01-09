@@ -106,6 +106,8 @@ fetch("http://localhost:5678/api/works", {
         console.log(tab);
         for (let i = 0; i < tab; i++) {
 
+            let gallery = document.querySelector(".gallery");
+
             const img = document.createElement("img");
             img.setAttribute("src", response2[i].imageUrl);
             img.setAttribute("crossorigin", "anonymous");
@@ -114,7 +116,6 @@ fetch("http://localhost:5678/api/works", {
             const titre = document.createElement("p");
             titre.innerHTML = response2[i].title;
 
-            let gallery = document.querySelector(".gallery");
 
             const figure = document.createElement("div");
             gallery.appendChild(figure);
@@ -126,58 +127,64 @@ fetch("http://localhost:5678/api/works", {
             const btnobjets = document.querySelector(".objets");
             // 2 - Appeler l'évènement click sur le bouton 
             btnobjets.addEventListener("click", function () {
-             // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
+                // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
                 filtreObjets = response2.filter(function (objet) {
                     return objet.categoryId == 1
                 })
                 console.log(filtreObjets);
+
+// response2.filtreObjets;
+// gallery.innerHTML="";
+// response2.filtreObjets;
+
+
             });
 
 
             // Filtre des appartements
-             // 1- Appeler  le bouton
-             const btnappartements = document.querySelector(".appartements");
-             // 2 - Appeler l'évènement click sur le bouton 
-             btnappartements.addEventListener("click", function () {
-              // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
-                 filtreAppartements = response2.filter(function (appartement) {
-                     return appartement.categoryId == 2
-                 })
-                 console.log(filtreAppartements);
-             });
+            // 1- Appeler  le bouton
+            const btnappartements = document.querySelector(".appartements");
+            // 2 - Appeler l'évènement click sur le bouton 
+            btnappartements.addEventListener("click", function () {
+                // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
+                filtreAppartements = response2.filter(function (appartement) {
+                    return appartement.categoryId == 2
+                })
+                console.log(filtreAppartements);
+            });
 
 
-             // Filtre des hôtels
-             // 1- Appeler  le bouton
-             const btnhotels = document.querySelector(".hotels");
-             // 2 - Appeler l'évènement click sur le bouton 
-             btnhotels.addEventListener("click", function () {
-              // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
-                 filtreHotels = response2.filter(function (hotel) {
-                     return hotel.categoryId == 3
-                 })
-                 console.log(filtreHotels);
-             });
+            // Filtre des hôtels
+            // 1- Appeler  le bouton
+            const btnhotels = document.querySelector(".hotels");
+            // 2 - Appeler l'évènement click sur le bouton 
+            btnhotels.addEventListener("click", function () {
+                // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
+                filtreHotels = response2.filter(function (hotel) {
+                    return hotel.categoryId == 3
+                })
+                console.log(filtreHotels);
+
+            });
 
 
-               // Filtre "Tous"
-             // 1- Appeler  le bouton
-             const btntous = document.querySelector(".tous");
-             // 2 - Appeler l'évènement click sur le bouton 
-             btntous.addEventListener("click", function () {
-              // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
-                 filtreGeneral = response2.filter(function (produit) {
-                     return produit.categoryId >= 1
-                 })
-                 console.log(filtreGeneral);
-             });
+            // Filtre "Tous"
+            // 1- Appeler  le bouton
+            const btntous = document.querySelector(".tous");
+            // 2 - Appeler l'évènement click sur le bouton 
+            btntous.addEventListener("click", function () {
+                // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
+                filtreGeneral = response2.filter(function (produit) {
+                    return produit.categoryId >= 1
+                })
+                console.log(filtreGeneral);
+            });
         }
 
 
 
 
     });
-
 
 // Route Works avec la méthode POST:
 // fetch("http://localhost:5678/api/works", {

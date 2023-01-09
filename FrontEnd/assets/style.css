@@ -182,13 +182,22 @@ nav ul {
 
 }
 
-nav li {
-	padding: 0 10px;
-	font-size: 1.2em;
+.lien-login {
+	display: block;
+	width: 100%;
+
 }
 
-li:hover {
+nav li, .lien-login {
+	padding: 0 10px;
+	font-size: 1.2em;
+	text-decoration: none;
+	color: black;
+}
+
+li:hover, .lien-login:hover {
 	color: #B1663C;
+	text-decoration: none;
 }
 
 #introduction {
@@ -218,9 +227,13 @@ li:hover {
 	margin-bottom: 0.5em;
 }
 
-#portfolio h2 {
+#portfolio h2, #login {
 	text-align: center;
 	margin-bottom: 1em;
+}
+
+#login {
+	margin-top: 4em;
 }
 
 #filtre {
@@ -271,12 +284,15 @@ li:hover {
 
 }
 
-#contact {
+#contact, #connexion {
 	width: 50%;
 	margin: auto;
 }
+#connexion {
+	padding-bottom: 150px;
+}
 
-#contact>* {
+#contact>*, #connexion>* {
 	text-align: center;
 
 }
@@ -285,21 +301,21 @@ li:hover {
 	margin-bottom: 20px;
 }
 
-#contact form {
+#contact form, #connexion form {
 	text-align: left;
 	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
+#contact input, #connexion input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-#contact label {
+#contact label, #connexion label, #connexion p {
 	margin: 2em 0 1em 0;
 }
 
@@ -317,6 +333,19 @@ input[type="submit"] {
 	width: 180px;
 	text-align: center;
 	border-radius: 60px;
+}
+
+#connexion p {
+	font-family: Work Sans;
+font-size: 14px;
+font-weight: 500;
+line-height: 16px;
+letter-spacing: 0em;
+text-align: center;
+color: #3D3D3D;
+}
+.forgot-pass:hover {
+	text-decoration: underline;
 }
 
 footer nav ul {
