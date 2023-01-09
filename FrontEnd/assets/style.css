@@ -188,11 +188,16 @@ nav ul {
 
 }
 
-nav li, .lien-login {
+nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+	
+}
+.lien-login {
 	text-decoration: none;
+	font-style: normal;
 	color: black;
+
 }
 
 li:hover, .lien-login:hover {
@@ -343,6 +348,13 @@ line-height: 16px;
 letter-spacing: 0em;
 text-align: center;
 color: #3D3D3D;
+}
+.forgot-pass {
+	display: block;
+	width: 100%;
+	text-decoration: none;
+	color: #3D3D3D;
+
 }
 .forgot-pass:hover {
 	text-decoration: underline;
