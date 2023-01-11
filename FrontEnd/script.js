@@ -1,21 +1,82 @@
+
+
 let user = {
     email: "sophie.bluel@test.tld",
     password: "S0phie"
 };
-
 fetch("http://localhost:5678/api/users/login", {
-    method: "post",
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(user)
+method: "post",
+headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+},
+body: JSON.stringify(user)
 
 })
-    .then(res => res.json())
-    .then(res => console.log(res))
+.then(response => response.json())
+.then(response1 => {
+    console.log(response1)
+});
 
 
+
+
+
+
+
+// Fonction pour récupérer les données du user dans l'API 
+   
+    async function getUserData() {
+        let user = {
+            email: "sophie.bluel@test.tld",
+            password: "S0phie"
+        };
+    const response = await fetch("http://localhost:5678/api/users/login", {
+        method: "post",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    
+    })
+    return await response.json();
+}
+
+// Fonction pour ajouter l'EventListener sur le bouton
+async function ajoutEventListener() {
+    let mail = document.querySelector("#mail"); 
+    let button = document.querySelector("#btn"); 
+    let pass = document.querySelector("#pass"); 
+
+
+    button.addEventListener("click", function(e) {
+e.preventDefault();
+let usermail = mail.email.value;
+let userpass = pass.password.value;
+
+
+if(usermail === "sophie.bluel@test.tld" && userpass === "S0phie") {
+    console.log("C'est ok")
+} else {console.log("Pas ok")}
+
+    })
+}
+ajoutEventListener(getUserData);
+
+
+
+
+         
+
+
+
+
+
+
+
+
+// Récupération des catégories
 fetch("http://localhost:5678/api/categories", {
     headers: {
         'Accept': 'application/json',
@@ -25,89 +86,13 @@ fetch("http://localhost:5678/api/categories", {
     )
     .then(response1 => {
         console.log(response1)
-
-
-        // let catégories = response1.length;
-        // console.log(catégories);
-        // let resultatDuFiltre = response1.filter(then(response1) {
-        //     for
-        // })
-
-
-
-
-        // function filtrerLesCatégories() {
-        //     let resultatDuFiltre = response2.filter(function(catégorie) {
-        //         // for (i = 0; i < catégorie.response2.lenght; i++) 
-        //         //     if 
-
-
-
-        // });
-        // console.log(resultatDuFiltre);
-
-
-        // }
-
-
-
-        // const MesProjets = document.querySelector("#portfolio h2");
-        // console.log(MesProjets);
-
-        // const filtre = document.createElement("div");
-        // MesProjets.appendChild(filtre);
-
-
-
-
-
-        // const btnTous = document.createElement("button");
-        // filtre.appendChild(btnTous);
-        // console.log(filtre);
-
-        // let resultatDuFiltre = response2.filter(function(catégorie) {
-
-
-        // });
-        // console.log(resultatDuFiltre);
-
-        // const boutons = document.querySelectorAll("#filtre button");
-        // console.log(boutons);
-
-
-
-
-
-
-
-
-
-
-
-
-        // boutons.addEventListener("click", function);
-
     });
 
 
 
-fetch("http://localhost:5678/api/works", {
-    headers: {
+// Récupération et affichage des works de la gallerie
 
-        'Accept': 'application/json'
-
-
-    }
-})
-    .then(response => response.json())
-    .then(response2 => {
-        console.log(response2);
-
-
-
-
-    });
-
+// Fonction pour récupérer les données works de l'API
 async function getAllWorks() {
     const response = await fetch("http://localhost:5678/api/works", {
         headers: {
@@ -120,11 +105,13 @@ async function getAllWorks() {
     return await response.json()
 }
 
+
+// Fonction pour afficher les images de la gallerie
 function AffichageImages(response) {
     let tab = response.length;
     console.log(tab);
     let gallery = document.querySelector(".gallery");
-    gallery.innerHTML="";
+    gallery.innerHTML = "";
 
     for (let i = 0; i < tab; i++) {
 
@@ -145,23 +132,20 @@ function AffichageImages(response) {
 
 
     }
-
 }
-async function AfficherTousWorks(){
+
+// Fonction pour afficher tous les works 
+async function AfficherTousWorks() {
     let data = await getAllWorks()
     AffichageImages(data)
-} 
-
+}
 AfficherTousWorks()
 
 
 // Filtre des objets
-// 1- Appeler  le bouton
 const btnobjets = document.querySelector("#objets");
-// 2 - Appeler l'évènement click sur le bouton 
 btnobjets.addEventListener("click", async function () {
     let data = await getAllWorks()
-    // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
     const filtreObjets = data.filter(function (objet) {
         return objet.categoryId == 1
     })
@@ -173,11 +157,8 @@ btnobjets.addEventListener("click", async function () {
 
 
 // Filtre des appartements
-// 1- Appeler  le bouton
 const btnappartements = document.querySelector("#appartements");
-// 2 - Appeler l'évènement click sur le bouton 
 btnappartements.addEventListener("click", async function () {
-    // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
     let data = await getAllWorks();
     filtreAppartements = data.filter(function (appartement) {
         return appartement.categoryId == 2
@@ -188,12 +169,9 @@ btnappartements.addEventListener("click", async function () {
 
 
 // Filtre des hôtels
-// 1- Appeler  le bouton
 const btnhotels = document.querySelector("#hotels");
-// 2 - Appeler l'évènement click sur le bouton 
 btnhotels.addEventListener("click", async function () {
     let data = await getAllWorks();
-    // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
     filtreHotels = data.filter(function (hotel) {
         return hotel.categoryId == 3
     })
@@ -203,14 +181,14 @@ btnhotels.addEventListener("click", async function () {
 });
 
 
-// Filtre "Tous"
-// 1- Appeler  le bouton
+// Bouton "Tous"
 const btntous = document.querySelector("#tous");
-// 2 - Appeler l'évènement click sur le bouton 
 btntous.addEventListener("click", function () {
-    // 3 - Mettre méthode filter dans la fonction anonyme de l'évènement
-   AfficherTousWorks();
+    AfficherTousWorks();
 });
+
+
+
 
 // Route Works avec la méthode POST:
 // fetch("http://localhost:5678/api/works", {
