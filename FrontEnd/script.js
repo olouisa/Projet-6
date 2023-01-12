@@ -45,6 +45,8 @@ body: JSON.stringify(user)
 
 // Fonction pour ajouter l'EventListener sur le bouton
 async function ajoutEventListener() {
+    const divMessage= document.createElement("div");
+    document.querySelector("#login").appendChild(divMessage);
     let mail = document.querySelector("#mail"); 
     let button = document.querySelector("#btn"); 
     let pass = document.querySelector("#pass"); 
@@ -52,18 +54,28 @@ async function ajoutEventListener() {
 
     button.addEventListener("click", function(e) {
 e.preventDefault();
-let usermail = mail.email.value;
-let userpass = pass.password.value;
+let usermail = mail.value;
+let userpass = pass.value;
 
 
 if(usermail === "sophie.bluel@test.tld" && userpass === "S0phie") {
+    document.location.href="./index.html";
     console.log("C'est ok")
-} else {console.log("Pas ok")}
+} else {
+    divMessage.innerHTML="Erreur dans l’identifiant ou le mot de passe.";
+    divMessage.style.color = "red";
+    divMessage.style.fontSize = "12px";
+    divMessage.style.paddingTop = "60px";
+    console.log("Pas ok")}
 
     })
 }
-ajoutEventListener(getUserData);
+ajoutEventListener();
 
+// async function envoyerFormulaire() {
+//     let data = await getUserData;
+//     ajoutEventListener(data);
+// }
 
 
 
