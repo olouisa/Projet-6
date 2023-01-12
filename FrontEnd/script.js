@@ -59,7 +59,7 @@ let userpass = pass.value;
 
 
 if(usermail === "sophie.bluel@test.tld" && userpass === "S0phie") {
-    document.location.href="./index.html";
+    document.location.href="./homepage_edit.html";
     console.log("C'est ok")
 } else {
     divMessage.innerHTML="Erreur dans l’identifiant ou le mot de passe.";

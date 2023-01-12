@@ -142,6 +142,58 @@ body {
 	font-size: 14px;
 }
 
+#banner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	height: 59px;
+	width: 100%;
+}
+
+.liens-modifications {
+	display: block;
+	color: black;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+	margin-bottom: 1.5em;
+    margin-left: 20px;
+}
+.liens-modifications--white {
+	color: white;
+	margin-bottom: 0em;
+    margin-left: 0px;
+
+}
+
+.fa-edit:before,
+.fa-pen-to-square:before {
+	content: "\f044";
+	font-size: 15px;
+	font-weight: 100;
+	margin-right: 5px;
+}
+
+#btn-publication {
+
+	font-family: Work Sans;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 16px;
+	letter-spacing: 0em;
+	text-align: center;
+	background-color: white;
+	border-radius: 60px;
+	height: 38px;
+	width: 216px;
+	margin-left: 20px;
+}
+
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -168,6 +220,11 @@ h1>span {
 	;
 }
 
+#portfolio_titre {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 h2 {
 	font-family: 'Syne';
 	font-weight: 700;
@@ -191,8 +248,9 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
-	
+
 }
+
 .lien-login {
 	text-decoration: none;
 	font-style: normal;
@@ -200,7 +258,8 @@ nav li {
 
 }
 
-li:hover, .lien-login:hover {
+li:hover,
+.lien-login:hover {
 	color: #B1663C;
 	text-decoration: none;
 }
@@ -232,7 +291,8 @@ li:hover, .lien-login:hover {
 	margin-bottom: 0.5em;
 }
 
-#portfolio h2, #login {
+#portfolio h2,
+#login {
 	text-align: center;
 	margin-bottom: 1em;
 }
@@ -289,15 +349,18 @@ li:hover, .lien-login:hover {
 
 }
 
-#contact, #connexion {
+#contact,
+#connexion {
 	width: 50%;
 	margin: auto;
 }
+
 #connexion {
 	padding-bottom: 150px;
 }
 
-#contact>*, #connexion>* {
+#contact>*,
+#connexion>* {
 	text-align: center;
 
 }
@@ -306,21 +369,25 @@ li:hover, .lien-login:hover {
 	margin-bottom: 20px;
 }
 
-#contact form, #connexion form {
+#contact form,
+#connexion form {
 	text-align: left;
 	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input, #connexion input {
+#contact input,
+#connexion input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-#contact label, #connexion label, #connexion p {
+#contact label,
+#connexion label,
+#connexion p {
 	margin: 2em 0 1em 0;
 }
 
@@ -342,13 +409,14 @@ input[type="submit"] {
 
 #connexion p {
 	font-family: Work Sans;
-font-size: 14px;
-font-weight: 500;
-line-height: 16px;
-letter-spacing: 0em;
-text-align: center;
-color: #3D3D3D;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 16px;
+	letter-spacing: 0em;
+	text-align: center;
+	color: #3D3D3D;
 }
+
 .forgot-pass {
 	display: block;
 	width: 100%;
@@ -356,6 +424,7 @@ color: #3D3D3D;
 	color: #3D3D3D;
 
 }
+
 .forgot-pass:hover {
 	text-decoration: underline;
 }
