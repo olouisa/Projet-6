@@ -381,7 +381,8 @@ li:hover,
 }
 
 #contact input,
-#connexion input {
+#connexion input,
+#btn_ajouterPhoto {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -441,6 +442,7 @@ footer nav ul {
 /* Modale */
 .modale {
 	display: flex;
+	overflow: auto;
 	justify-content: center;
 	align-items: center;
 	position: fixed;
@@ -452,12 +454,65 @@ footer nav ul {
 }
 
 .modale-opaque {
-	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 	background: #FFFFFF;
 	border-radius: 10px;
 	height: 731px;
 	width: 630px;
 	margin-top: 660px;
 	border-radius: 10px;
+
+}
+
+.modal_header {
+	display: flex;
+	width: 100%;
+	justify-content: flex-end;
+	align-items: center;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	padding-right: 25px;
+
+}
+
+#close {
+	background-color: #FFFFFF;
+	border-color: transparent;
+}
+
+.fa-solid,
+.fas {
+	font-size: 17px;
+}
+
+#titleModal {
+	font-family: Work Sans;
+	font-size: 26px;
+	font-weight: 400;
+	line-height: 30px;
+	letter-spacing: 0em;
+	text-align: center;
+	color: rgba(0, 0, 0, 1);
+
+}
+
+#modal_gallery {
+	width: 420px;
+	border-bottom: 1px solid rgba(179, 179, 179, 1);
+
+}
+
+#btn_ajouterPhoto {
+	width: 237px;
+	height: 36px;
+	font-size: 14px;
+}
+
+.supprimer_gallerie {
+	color: rgba(214, 83, 83, 1);
+	text-decoration: none;
 
 }

@@ -241,7 +241,9 @@ btnOpenModal.addEventListener("click", openModal);
 
 const btnCloseModal = document.querySelector("#close");
 console.log(btnCloseModal);
-btnCloseModal.addEventListener("click", closeModal)
+btnCloseModal.addEventListener("click", closeModal);
+
+
 
 
 console.log("test");
