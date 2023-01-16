@@ -217,4 +217,31 @@ btntous.addEventListener("click", function () {
 //     .then(response => response.json())
 //     .then(response2 => console.log(response2));
 
+
+
+// Création de la fenêtre modale
+
+function openModal() {
+    const modal = document.querySelector("#modale1");
+    modal.style.display = "flex";
+   const modal2 = document.querySelector(".modale-opaque");
+  
+}
+function closeModal() {
+    const modal = document.querySelector("#modale1");
+    modal.style.display = "none";
+   const modal2 = document.querySelector(".modale-opaque");
+
+}
+
+
+const btnOpenModal = document.querySelector(".js-modal");
+console.log(btnOpenModal);
+btnOpenModal.addEventListener("click", openModal);
+
+const btnCloseModal = document.querySelector("#close");
+console.log(btnCloseModal);
+btnCloseModal.addEventListener("click", closeModal)
+
+
 console.log("test");
