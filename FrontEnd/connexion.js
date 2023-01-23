@@ -47,20 +47,20 @@ let button = document.querySelector("#btn");
 let pass = document.querySelector("#pass");
 
 
-button.addEventListener("click", function (e) {
+button.addEventListener("click", async function (e) {
     e.preventDefault();
     let usermail = mail.value;
     let userpass = pass.value;
-    let data = getUserData(usermail, userpass);
-    // localStorage.setItem()
-  
+    let data = await getUserData(usermail, userpass);
+    // localStorage.setItem(data.token);
+console.log(data.token);
 
+    if (data.token) {
 
-    if (data != null) {
-        // document.location.href = "./homepage_edit.html";
+        document.location.href = "./homepage_edit.html";
         console.log("C'est ok")
         console.log(data);
-    } else {
+    } else  {
         divMessage.innerHTML = "Erreur dans l’identifiant ou le mot de passe.";
         divMessage.style.color = "red";
         divMessage.style.fontSize = "12px";

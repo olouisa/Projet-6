@@ -99,6 +99,7 @@ function AffichageImages(response) {
 // Fonction pour afficher tous les works 
 async function AfficherTousWorks() {
     let data = await getAllWorks()
+    console.log(data);
     AffichageImages(data)
 }
 AfficherTousWorks()
