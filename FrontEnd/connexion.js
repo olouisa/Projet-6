@@ -52,7 +52,7 @@ button.addEventListener("click", async function (e) {
     let usermail = mail.value;
     let userpass = pass.value;
     let data = await getUserData(usermail, userpass);
-    // localStorage.setItem(data.token);
+    localStorage.setItem("token", data.token);
 console.log(data.token);
 
     if (data.token) {

@@ -1,21 +1,4 @@
 
-// Fonction pour supprimer les works
-async function deleteWorks() {
-    let id = response[i].id;
-    const response = await fetch('http://localhost:5678/api/works/${id}', {
-        method: "DELETE",
-        body: null,
-        headers: {
-            'Accept': '*/*',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3MzI1ODIzNiwiZXhwIjoxNjczMzQ0NjM2fQ.E-2ipCmskbEKBS74kK-Gx0u1sIBMFT8J0yegaN8L2dw'
-
-        }
-
-    })
-    return await response.json()
-
-}
-
 
 // / Récupération et affichage des works de la gallerie
 
@@ -54,7 +37,7 @@ function AffichageImages(response) {
         img.setAttribute("crossorigin", "anonymous");
         img.style.width = "78px";
         img.style.height = "104px";
-        img.innerHTML = '<button><i class="fa-solid fa-trash-can"></i></button>';
+        img.innerHTML = '<a href="#"><button><i class="fa-solid fa-trash-can"></i></button></a>';
 
         console.log(img);
 
@@ -65,16 +48,8 @@ function AffichageImages(response) {
         // btnDelete.style.position = "absolute";
         // btnDelete.style.top = "10px";
         // btnDelete.style.right = "6px";
-        // console.log(btnDelete)
-
-
-
-
-        console.log(response[i].id);
-        // console.log(response[i].imageUrl);
-        let images = response[i].imageUrl;
-        console.log(images);
-
+        // console.log(btnDelete);
+        // img.appendChild(btnDelete);
 
 
 
@@ -91,11 +66,6 @@ function AffichageImages(response) {
         figure.appendChild(img);
         figure.appendChild(titre);
         // figure.appendChild(btnDelete);
-        // img.appendChild(btnDelete);
-
-
-
-
 
     }
 }
@@ -109,7 +79,24 @@ async function AfficherTousWorks() {
 AfficherTousWorks();
 
 
-// Fonction pour supprimer
+// Fonction pour supprimer les works
+async function deleteWorks() {
+    // let id = response[i].id;
+    const response = await fetch('http://localhost:5678/api/works/${id}', {
+        method: "DELETE",
+        body: null,
+        headers: {
+            'Accept': '*/*',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3MzI1ODIzNiwiZXhwIjoxNjczMzQ0NjM2fQ.E-2ipCmskbEKBS74kK-Gx0u1sIBMFT8J0yegaN8L2dw'
+
+        }
+
+    })
+    return await response.json()
+
+}
+
+// Fonction pour supprimer un work
 
 async function deleteOneWork() {
     let data = await getAllWorks()
