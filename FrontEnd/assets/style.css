@@ -470,9 +470,9 @@ footer nav ul {
 	align-items: center;
 	background: #FFFFFF;
 	border-radius: 10px;
-	height: 731px;
+	height: 590px;
 	width: 630px;
-	top: 400px;
+	top: 0px;
 	border-radius: 10px;
 	overflow: auto;
 
@@ -513,8 +513,23 @@ footer nav ul {
 #modal_gallery {
 	width: 420px;
 	border-bottom: 1px solid rgba(179, 179, 179, 1);
-
 }
+
+.btn-poubelle {
+	background-color : black;
+	width : 17px;
+	height : 17px;
+	position : absolute;
+	top : 31%;
+	bottom : 68%;
+	left : 39%;
+	right : 59%;
+}
+
+
+
+
+
 
 #btn_ajouterPhoto {
 	width: 237px;
