@@ -18,7 +18,7 @@ async function getAllWorks() {
 
 
 // Fonction pour afficher les images de la gallerie
-function AffichageImages(response) {
+async function AffichageImages(response) {
     let tab = response.length;
     console.log(tab);
     let gallery = document.querySelector("#modal_gallery");
@@ -37,19 +37,22 @@ function AffichageImages(response) {
         img.setAttribute("crossorigin", "anonymous");
         img.style.width = "78px";
         img.style.height = "104px";
-        img.innerHTML = '<a href="#"><button><i class="fa-solid fa-trash-can"></i></button></a>';
+        // img.innerHTML = '<a href="#"><button><i class="fa-solid fa-trash-can"></i></button></a>';
 
         console.log(img);
 
-        // const btnDelete = document.createElement("button");
-        // btnDelete.style.backgroundColor = "black";
-        // btnDelete.style.width = "17px";
-        // btnDelete.style.height = "17px";
-        // btnDelete.style.position = "absolute";
-        // btnDelete.style.top = "10px";
-        // btnDelete.style.right = "6px";
-        // console.log(btnDelete);
+        const btnDelete = document.createElement("button");
+        btnDelete.setAttribute("id", response[i].id);
+        btnDelete.setAttribute("type", "button");
+btnDelete.style.position = "absolute";
+        btnDelete.style.backgroundColor = "black";
+        btnDelete.style.width = "17px";
+        btnDelete.style.height = "17px";
+        btnDelete.style.top = "5px";
+        btnDelete.style.right = "6px";
+        console.log(btnDelete);
         // img.appendChild(btnDelete);
+        console.log(btnDelete.id);
 
 
 
@@ -61,11 +64,19 @@ function AffichageImages(response) {
 
 
         const figure = document.createElement("div");
-        // figure.style.position = "relative";
+        figure.style.position = "relative";
         gallery.appendChild(figure);
         figure.appendChild(img);
         figure.appendChild(titre);
-        // figure.appendChild(btnDelete);
+        figure.appendChild(btnDelete);
+
+        let data2 = await getAllWorks();
+        let data = localStorage.getItem("token");
+        
+        if(data) {
+
+        btnDelete.addEventListener("click", deleteWorks(data2));}
+        
 
     }
 }
@@ -81,8 +92,11 @@ AfficherTousWorks();
 
 // Fonction pour supprimer les works
 async function deleteWorks() {
-    // let id = response[i].id;
-    const response = await fetch('http://localhost:5678/api/works/${id}', {
+    let data = await getAllWorks();
+    let id = data.id;
+    
+    // console.log(id);
+    const response = await fetch('http://localhost:5678/api/works/'+id, {
         method: "DELETE",
         body: null,
         headers: {
@@ -95,31 +109,32 @@ async function deleteWorks() {
     return await response.json()
 
 }
+deleteWorks();
 
 // Fonction pour supprimer un work
 
-async function deleteOneWork() {
-    let data = await getAllWorks()
-    console.log(data);
-    let tab = data.length;
-    console.log(tab);
+// async function deleteOneWork() {
+//     let data = await getAllWorks()
+//     console.log(data);
+//     let tab = data.length;
+//     console.log(tab);
 
 
-    // data.forEach(element => {
+//     // data.forEach(element => {
 
-    //     const btnDelete = document.createElement("button");
-    //     btnDelete.style.backgroundColor = "black";
-    //     btnDelete.style.width = "17px";
-    //     btnDelete.style.height = "17px";
-    //     btnDelete.style.position = "absolute";
-    //     btnDelete.style.top = "10px";
-    //     btnDelete.style.right = "6px";
-    //     console.log(btnDelete)
+//     //     const btnDelete = document.createElement("button");
+//     //     btnDelete.style.backgroundColor = "black";
+//     //     btnDelete.style.width = "17px";
+//     //     btnDelete.style.height = "17px";
+//     //     btnDelete.style.position = "absolute";
+//     //     btnDelete.style.top = "10px";
+//     //     btnDelete.style.right = "6px";
+//     //     console.log(btnDelete)
 
-    // });
+//     // });
 
-}
-deleteOneWork();
+// }
+// deleteOneWork();
 
 
 
