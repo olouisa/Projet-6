@@ -70,12 +70,12 @@ btnDelete.style.position = "absolute";
         figure.appendChild(titre);
         figure.appendChild(btnDelete);
 
-        let data2 = await getAllWorks();
+        // let data2 = await getAllWorks();
         let data = localStorage.getItem("token");
         
-        if(data) {
+      
 
-        btnDelete.addEventListener("click", deleteWorks(data2));}
+        btnDelete.addEventListener("click", deleteWorks);
         
 
     }
@@ -109,7 +109,7 @@ async function deleteWorks() {
     return await response.json()
 
 }
-deleteWorks();
+// deleteWorks();
 
 // Fonction pour supprimer un work
 
