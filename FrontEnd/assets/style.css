@@ -462,6 +462,7 @@ footer nav ul {
 
 
 }
+
 .modale-opaque {
 	position: absolute;
 	display: flex;
@@ -470,13 +471,14 @@ footer nav ul {
 	align-items: center;
 	background: #FFFFFF;
 	border-radius: 10px;
-	height: 590px;
+	/* height: 590px; */
 	width: 630px;
 	top: 0px;
 	border-radius: 10px;
 	overflow: auto;
 
 }
+
 .modale-opaque-ajout {
 	position: absolute;
 	display: none;
@@ -485,7 +487,7 @@ footer nav ul {
 	align-items: center;
 	background: #FFFFFF;
 	border-radius: 10px;
-	height: 590px;
+	height: 670px;
 	width: 630px;
 	top: 0px;
 	border-radius: 10px;
@@ -502,6 +504,7 @@ footer nav ul {
 	padding-bottom: 25px;
 
 }
+
 .modal_header2 {
 	display: flex;
 	width: 100%;
@@ -535,23 +538,118 @@ footer nav ul {
 	letter-spacing: 0em;
 	text-align: center;
 	color: rgba(0, 0, 0, 1);
+	margin-bottom: 30px;
 
 }
 
-#modal_gallery, #formulaires {
+#modal_gallery,
+#div_modale-ajout {
 	width: 420px;
 	border-bottom: 1px solid rgba(179, 179, 179, 1);
 }
 
+#picture-space {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 420px;
+	height: 169px;
+	background: #E8F1F7;
+	border-radius: 3px;
+}
+
+.fa-image {
+	height: 46px;
+	width: 58px;
+	border-radius: 0px;
+	background: #E8F1F7;
+}
+
+.fa-image:before {
+	font-size: 58px;
+	border-radius: 0px;
+	color: #B9C5CC;
+}
+
+#type-taille {
+	font-family: Work Sans;
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 12px;
+	letter-spacing: 0em;
+	text-align: center;
+
+}
+
+#formulaires {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: flex-start;
+	width: 100%;
+	padding-bottom: 35px;
+}
+
+#Titre,
+.form-ajout select {
+	width: 420px;
+	height: 51px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: transparent;
+	margin-bottom: 5px;
+}
+
+.form-ajout label {
+	display: block;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	color: #3D3D3D;
+	margin-top: 20px;
+
+}
+
+.form-ajout input,
+.form-ajout option {
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
+	color: #444444;
+
+}
+
+#btn_ajouterUnePhoto {
+	width: 173px;
+	height: 36px;
+	background: #CBD6DC;
+	border-radius: 50px;
+	border: transparent;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 16px;
+	letter-spacing: 0em;
+	text-align: center;
+	color: rgba(48, 102, 133, 1);
+
+
+}
+
 .btn-poubelle {
-	background-color : black;
-	width : 17px;
-	height : 17px;
-	position : absolute;
-	top : 31%;
-	bottom : 68%;
-	left : 39%;
-	right : 59%;
+	background-color: black;
+	width: 17px;
+	height: 17px;
+	position: absolute;
+	top: 31%;
+	bottom: 68%;
+	left: 39%;
+	right: 59%;
 }
 
 
@@ -559,10 +657,17 @@ footer nav ul {
 
 
 
-#btn_ajouterPhoto {
+#btn_ajouterPhoto,
+#valider-ajout {
 	width: 237px;
 	height: 36px;
 	font-size: 14px;
+	border: transparent;
+}
+
+#valider-ajout {
+	background: rgba(167, 167, 167, 1);
+
 }
 
 .supprimer_gallerie {

@@ -42,7 +42,9 @@
 
             </div>
             <h1 id="titleModal">Ajout photo</h1>
+            <div id="div_modale-ajout">
             <div id="picture-space">
+                <i class="fa-solid fa-image"></i>
                 <div id="picture"></div>
                 <button type="button" id="btn_ajouterUnePhoto">+ Ajouter photo</button>
                 <p id="type-taille">jpg, png : 4mo max</p>
@@ -50,20 +52,22 @@
 
             <div id="formulaires">
                 <form class="form-ajout">
-                    <label for="Titre">Titre</label>
+                    <label for="Titre">Titre</label> <br/>
                     <input type="text" id="Titre" name="Titre" required>
                 </form>
 
                 <form class="form-ajout">
-                    <label for="Catégorie">Catégorie</label>
+                    <label for="Catégorie">Catégorie</label><br/>
 
                     <select name="Catégorie" id="Catégorie">
+                        <option value=""></option>
                         <option value="Objets">Objets</option>
                         <option value="Appartements">Appartements</option>
                         <option value="Hotels & restaurants">Hotels & restaurants</option>
                     </select>
                 </form>
             </div>
+        </div>
 
             <input id="valider-ajout" type="submit" value="Valider">
 
