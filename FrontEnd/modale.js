@@ -44,7 +44,7 @@ async function AffichageImages(response) {
         const btnDelete = document.createElement("button");
         btnDelete.setAttribute("id", response[i].id);
         btnDelete.setAttribute("type", "button");
-btnDelete.style.position = "absolute";
+        btnDelete.style.position = "absolute";
         btnDelete.style.backgroundColor = "black";
         btnDelete.style.width = "17px";
         btnDelete.style.height = "17px";
@@ -70,13 +70,10 @@ btnDelete.style.position = "absolute";
         figure.appendChild(titre);
         figure.appendChild(btnDelete);
 
-        // let data2 = await getAllWorks();
-        let data = localStorage.getItem("token");
-        
-      
 
-        btnDelete.addEventListener("click", deleteWorks);
-        
+        btnDelete.addEventListener("click", () => deleteWorks(response[i].id)
+        );
+
 
     }
 }
@@ -91,27 +88,32 @@ AfficherTousWorks();
 
 
 // Fonction pour supprimer les works
-async function deleteWorks() {
-    let data = await getAllWorks();
-    let id = data.id;
-    
-    // console.log(id);
-    const response = await fetch('http://localhost:5678/api/works/'+id, {
+async function deleteWorks(_id) {
+     console.log(_id);
+    let token = localStorage.getItem("token");
+    console.log(token);
+
+    const response = await fetch(`http://localhost:5678/api/works/${_id}`, {
         method: "DELETE",
-        body: null,
+        // body: null,
         headers: {
             'Accept': '*/*',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3MzI1ODIzNiwiZXhwIjoxNjczMzQ0NjM2fQ.E-2ipCmskbEKBS74kK-Gx0u1sIBMFT8J0yegaN8L2dw'
+            'Authorization': `Bearer ${token}`
+
 
         }
 
     })
-    return await response.json()
+    console.log(response);
+    return response;
+
 
 }
 // deleteWorks();
 
 // Fonction pour supprimer un work
+
+
 
 // async function deleteOneWork() {
 //     let data = await getAllWorks()
@@ -135,6 +137,5 @@ async function deleteWorks() {
 
 // }
 // deleteOneWork();
-
 
 
