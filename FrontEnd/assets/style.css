@@ -477,6 +477,21 @@ footer nav ul {
 	overflow: auto;
 
 }
+.modale-opaque-ajout {
+	position: absolute;
+	display: none;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	background: #FFFFFF;
+	border-radius: 10px;
+	height: 590px;
+	width: 630px;
+	top: 0px;
+	border-radius: 10px;
+	overflow: auto;
+
+}
 
 .modal_header {
 	display: flex;
@@ -485,11 +500,24 @@ footer nav ul {
 	align-items: center;
 	padding-top: 25px;
 	padding-bottom: 25px;
-	padding-right: 25px;
 
+}
+.modal_header2 {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 25px;
 }
 
 #close {
+	background-color: #FFFFFF;
+	border-color: transparent;
+	padding-right: 25px;
+}
+
+#retour {
+	padding-left: 25px;
 	background-color: #FFFFFF;
 	border-color: transparent;
 }
@@ -510,7 +538,7 @@ footer nav ul {
 
 }
 
-#modal_gallery {
+#modal_gallery, #formulaires {
 	width: 420px;
 	border-bottom: 1px solid rgba(179, 179, 179, 1);
 }

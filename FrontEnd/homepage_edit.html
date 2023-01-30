@@ -18,18 +18,54 @@
 
     <aside id="modale1" class="modale" style="display: none">
         <div id="overlay"></div>
-        <div  class="modale-opaque">
-            <div class="modal_header"><button type="button" id="close" title="Fermer cette fenêtre modale"><i class="fa-solid fa-xmark"></i>
-            </button></div>
+        <div class="modale-opaque">
+            <div class="modal_header"><button type="button" id="close" title="Fermer cette fenêtre modale"><i
+                        class="fa-solid fa-xmark"></i>
+                </button></div>
             <h1 id="titleModal">Gallerie photos</h1>
             <div id="modal_gallery">
-                <!-- <button type="button" class= "btn-poubelle"></button> -->
             </div>
             <input id="btn_ajouterPhoto" type="submit" value="Ajouter une photo">
-        
-        <p><a href="#"  class="supprimer_gallerie">Supprimer la gallerie</a></p>
-            
 
+            <p><a href="#" class="supprimer_gallerie">Supprimer la gallerie</a></p>
+        </div>
+
+        <!-- Deuxième modale -->
+
+        <div class="modale-opaque-ajout">
+            <div class="modal_header2">
+                <button type="button" id="retour" title="Retourner à la page précédente"><i
+                        class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button type="button" id="close" title="Fermer cette fenêtre modale"><i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+            <h1 id="titleModal">Ajout photo</h1>
+            <div id="picture-space">
+                <div id="picture"></div>
+                <button type="button" id="btn_ajouterUnePhoto">+ Ajouter photo</button>
+                <p id="type-taille">jpg, png : 4mo max</p>
+            </div>
+
+            <div id="formulaires">
+                <form class="form-ajout">
+                    <label for="Titre">Titre</label>
+                    <input type="text" id="Titre" name="Titre" required>
+                </form>
+
+                <form class="form-ajout">
+                    <label for="Catégorie">Catégorie</label>
+
+                    <select name="Catégorie" id="Catégorie">
+                        <option value="Objets">Objets</option>
+                        <option value="Appartements">Appartements</option>
+                        <option value="Hotels & restaurants">Hotels & restaurants</option>
+                    </select>
+                </form>
+            </div>
+
+            <input id="valider-ajout" type="submit" value="Valider">
 
         </div>
 

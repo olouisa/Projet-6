@@ -233,3 +233,22 @@ async function deleteWorks(_id) {
 
 
 }
+
+// Aller vers la modale d'ajout
+const bntAjouterPhoto = document.querySelector("#btn_ajouterPhoto");
+const bntRetour = document.querySelector("#retour");
+const Modale1 = document.querySelector(".modale-opaque");
+const Modale2 = document.querySelector(".modale-opaque-ajout");
+
+bntAjouterPhoto.addEventListener("click", (e) => {
+    e.preventDefault();
+    Modale1.style.display = "none";
+    Modale2.style.display = "flex";
+})
+
+// Retourner à la modale de suppression
+bntRetour.addEventListener("click", (e) => {
+    e.preventDefault();
+    Modale1.style.display = "flex";
+    Modale2.style.display = "none";
+})
