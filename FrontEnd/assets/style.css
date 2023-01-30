@@ -471,7 +471,7 @@ footer nav ul {
 	align-items: center;
 	background: #FFFFFF;
 	border-radius: 10px;
-	/* height: 590px; */
+	height: 670px;
 	width: 630px;
 	top: 0px;
 	border-radius: 10px;
@@ -548,6 +548,9 @@ footer nav ul {
 	border-bottom: 1px solid rgba(179, 179, 179, 1);
 }
 
+#modal_gallery, .modale-opaque {
+	padding-bottom: 30px;
+}
 #picture-space {
 	display: flex;
 	flex-direction: column;
