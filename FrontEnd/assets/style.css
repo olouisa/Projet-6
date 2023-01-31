@@ -501,7 +501,7 @@ footer nav ul {
 	justify-content: flex-end;
 	align-items: center;
 	padding-top: 25px;
-	padding-bottom: 25px;
+	padding-bottom: 10px;
 
 }
 
@@ -511,6 +511,8 @@ footer nav ul {
 	justify-content: space-between;
 	align-items: center;
 	padding-top: 25px;
+	padding-bottom: 10px;
+
 }
 
 #close {
@@ -603,6 +605,8 @@ footer nav ul {
 	border: transparent;
 	margin-bottom: 5px;
 }
+
+
 
 .form-ajout label {
 	display: block;
