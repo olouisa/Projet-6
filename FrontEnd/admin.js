@@ -213,7 +213,7 @@ AfficherTousWorksModale();
 
 // Fonction pour supprimer les works
 async function deleteWorks(_id) {
-     console.log(_id);
+    console.log(_id);
     let token = localStorage.getItem("token");
     console.log(token);
 
@@ -251,4 +251,17 @@ bntRetour.addEventListener("click", (e) => {
     e.preventDefault();
     Modale1.style.display = "flex";
     Modale2.style.display = "none";
+})
+
+// Ajouter des travaux
+
+fetch('http://localhost:5678/api/works', {
+    method: "POST",
+    body: JSON.stringify({
+        id: 4,
+        title: 'Villa “La Balisiere” - Port Louis',
+        imageUrl: 'http://localhost:5678/images/la-balisiere1651287350102.png',
+        categoryId: 2,
+        userId: 1
+    })
 })
