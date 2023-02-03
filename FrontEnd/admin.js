@@ -84,7 +84,7 @@ function AffichageImages(response) {
     }
 }
 
-// Fonction pour afficher tous les works 
+// Fonction pour afficher tous les works
 async function AfficherTousWorks() {
     let data = await getAllWorks()
     console.log(data);
@@ -253,15 +253,129 @@ bntRetour.addEventListener("click", (e) => {
     Modale2.style.display = "none";
 })
 
-// Ajouter des travaux
 
-fetch('http://localhost:5678/api/works', {
-    method: "POST",
-    body: JSON.stringify({
-        id: 4,
-        title: 'Villa “La Balisiere” - Port Louis',
-        imageUrl: 'http://localhost:5678/images/la-balisiere1651287350102.png',
-        categoryId: 2,
-        userId: 1
+
+
+// Sélectionner et Prévisualiser l'image 
+const inputFile = document.querySelector("#input-file");
+console.log(inputFile);
+inputFile.addEventListener("change", function (e) {
+    const picture = document.querySelector("#picture");
+    const logo = document.querySelector(".fa-image");
+    console.log(logo);
+    let reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+
+        logo.style.display = "none";
+        let image = document.createElement('img');
+        image.src = reader.result;
+        let result = image.src;
+        // result.style.width = "50px";
+        picture.appendChild(image);
+        console.log(reader.result);
+        console.log(picture);
+
+
+
     })
+
+
+    reader.readAsDataURL(inputFile.files[0]);
+    console.log('Done');
+});
+
+
+
+
+
+
+
+
+// Ajouter des travaux
+let form = document.querySelector("#formulaires");
+console.log(form);
+form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    let token = localStorage.getItem("token");
+    console.log(token);
+
+    let title = document.querySelector("#title").value;
+    console.log(title);
+    let categoryId = document.querySelector("#categoryId").value;
+    console.log(categoryId);
+    let userId = document.querySelector("#userId").value;
+    console.log(userId);
+    id = document.querySelector("#id").value;
+    console.log(id);
+
+    let body =
+    {
+        "id": id,
+        "title": title,
+        "imageUrl": "http://localhost:5678/images/la-balisiere1675203882183.png",
+        "categoryId": categoryId,
+        "userId": userId
+    }
+    console.log(body);
+
+    const response = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+
+    console.log(body);
+    return await response.json();
+    console.log(response);
 })
+
+
+
+
+
+
+
+async function ajouterWork() {
+    // let token = localStorage.getItem("token");
+    // console.log(token);
+
+    // let title = document.querySelector("#title");
+    // console.log(title);
+    // let categoryId = document.querySelector("#categoryId");
+    // console.log(categoryId);
+    // let userId = document.querySelector("#userId");
+    // console.log(userId);
+    // id = document.querySelector("#id");
+    // console.log(id);
+
+    // let body =
+    // {
+    //     "id": 16,
+    //     "title": "La balisière",
+    //     "imageUrl": "http://localhost:5678/images/la-balisiere1675203882183.png",
+    //     "categoryId": "3",
+    //     "userId": 1
+    //   }
+    //   console.log(body);
+    // const response = await fetch("http://localhost:5678/api/works", {
+    //     method: "POST",
+    //     body: JSON.stringify(body),
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Authorization': `Bearer ${token}`,
+    //         'Content-Type': 'multipart/form-data'
+    //     }
+    // })
+
+    // console.log(body);
+    // return await response.json();
+    // console.log(response);
+
+
+}
+// ajouterWork();
