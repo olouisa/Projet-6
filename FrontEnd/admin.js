@@ -261,6 +261,9 @@ const inputFile = document.querySelector("#input-file");
 console.log(inputFile);
 inputFile.addEventListener("change", function (e) {
     const picture = document.querySelector("#picture");
+    picture.style.width = "129px";
+    picture.style.height = "193px";
+    const pictureSpace = document.querySelector("#picture-space");
     const logo = document.querySelector(".fa-image");
     console.log(logo);
     let reader = new FileReader();
@@ -271,10 +274,22 @@ inputFile.addEventListener("change", function (e) {
         let image = document.createElement('img');
         image.src = reader.result;
         let result = image.src;
-        // result.style.width = "50px";
+                // result.style.width = "50px";
         picture.appendChild(image);
+        image.style.display = "none";
         console.log(reader.result);
         console.log(picture);
+
+        let canvas = document.createElement("canvas");
+        picture.appendChild(canvas);
+
+        const canvasContext = canvas.getContext("2d");
+        console.log(canvas);
+
+        canvasContext.drawImage(
+            image, 0, 0, 50, 100
+        )
+
 
 
 
