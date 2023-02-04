@@ -564,6 +564,13 @@ footer nav ul {
 	border-radius: 3px;
 }
 
+#formPhoto {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
 .fa-image {
 	height: 46px;
 	width: 58px;

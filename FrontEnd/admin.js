@@ -274,22 +274,33 @@ inputFile.addEventListener("change", function (e) {
         let image = document.createElement('img');
         image.src = reader.result;
         let result = image.src;
-                // result.style.width = "50px";
+        // result.style.width = "50px";
         picture.appendChild(image);
         image.style.display = "none";
-        console.log(reader.result);
+        // console.log(reader.result);
         console.log(picture);
+
+        formPhoto = document.querySelector("#formPhoto");
+        formPhoto.style.display = "none";
+        formatPhoto = document.querySelector("#type-taille");
+        formatPhoto.style.display = "none";
+
 
         let canvas = document.createElement("canvas");
         picture.appendChild(canvas);
+        canvas.style.width = "129px";
+        canvas.style.height ="169px";
 
-        const canvasContext = canvas.getContext("2d");
+
+        let canvasContext = canvas.getContext("2d");
         console.log(canvas);
+        console.log(image.src);
 
-        canvasContext.drawImage(
-            image, 0, 0, 50, 100
-        )
-
+        // canvasContext.drawImage(image, 0, 0, 50, 100);
+        image.onload = function() {
+            canvasContext.drawImage(image, 0, 0, 300, 193);
+          };
+         
 
 
 
