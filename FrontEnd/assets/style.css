@@ -603,13 +603,13 @@ footer nav ul {
 	padding-bottom: 35px;
 }
 
-.form-ajout {
+#form-ajout {
 	display: flex;
     flex-direction: column;
 }
 
 #title,
-.form-ajout select {
+#form-ajout select {
 	width: 420px;
 	height: 51px;
 	background: #FFFFFF;
@@ -620,7 +620,7 @@ footer nav ul {
 
 
 
-.form-ajout label {
+#form-ajout label {
 	display: block;
 	font-family: 'Work Sans';
 	font-style: normal;
@@ -632,8 +632,8 @@ footer nav ul {
 
 }
 
-.form-ajout input,
-.form-ajout option {
+#form-ajout input,
+#form-ajout option {
 	font-family: 'Work Sans';
 	font-style: normal;
 	font-weight: 400;

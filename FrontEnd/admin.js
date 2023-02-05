@@ -320,29 +320,34 @@ inputFile.addEventListener("change", function (e) {
 
 
 // Ajouter des travaux
-let form = document.querySelector("#formulaires");
+let form = document.querySelector("#form-ajout");
 console.log(form);
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
     let token = localStorage.getItem("token");
     console.log(token);
+    let userId = localStorage.getItem("userId");
+    console.log(userId);
+
 
     let title = document.querySelector("#title").value;
     console.log(title);
     let categoryId = document.querySelector("#categoryId").value;
     console.log(categoryId);
-    let userId = document.querySelector("#userId").value;
-    console.log(userId);
-    id = document.querySelector("#id").value;
+    // let userId = document.querySelector("#userId").value;
+    // console.log(userId);
+    let id = document.querySelector("#id").value;
     console.log(id);
+    let inputFile = document.querySelector("#input-file").value;
+    console.log(inputFile);
 
     let body =
     {
-        "id": id,
+        // "id": [],
         "title": title,
-        "imageUrl": "http://localhost:5678/images/la-balisiere1675203882183.png",
+        "imageUrl": inputFile,
         "categoryId": categoryId,
-        "userId": userId
+        "userId": `${userId}`
     }
     console.log(body);
 
@@ -352,14 +357,14 @@ form.addEventListener("submit", async function (e) {
         headers: {
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`,
-            'Content-Type': 'multipart/form-data'
+            // 'Content-Type': 'multipart/form-data'
         }
     })
 
     console.log(body);
     return await response.json();
     console.log(response);
-})
+});
 
 
 

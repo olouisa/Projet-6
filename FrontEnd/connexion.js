@@ -9,7 +9,7 @@
 //             'Content-Type': 'application/json'
 //         },
 //         body: JSON.stringify(user)
-    
+
 //     })
 //         .then(response => response.json())
 //         .then(response1 => {
@@ -53,14 +53,16 @@ button.addEventListener("click", async function (e) {
     let userpass = pass.value;
     let data = await getUserData(usermail, userpass);
     localStorage.setItem("token", data.token);
-console.log(data.token);
+    localStorage.setItem("userId", data.userId);
+    console.log(data.userId);
+    console.log(data.token);
 
     if (data.token) {
 
         document.location.href = "./homepage_edit.html";
         console.log("C'est ok")
         console.log(data);
-    } else  {
+    } else {
         divMessage.innerHTML = "Erreur dans l’identifiant ou le mot de passe.";
         divMessage.style.color = "red";
         divMessage.style.fontSize = "12px";
