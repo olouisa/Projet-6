@@ -603,6 +603,11 @@ footer nav ul {
 	padding-bottom: 35px;
 }
 
+.form-ajout {
+	display: flex;
+    flex-direction: column;
+}
+
 #title,
 .form-ajout select {
 	width: 420px;
@@ -649,11 +654,15 @@ footer nav ul {
 	font-weight: 500;
 	line-height: 16px;
 	letter-spacing: 0em;
-	text-align: center;
+	/* text-align: center; */
 	color: rgba(48, 102, 133, 1);
-
-
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
+
 
 .btn-poubelle {
 	background-color: black;

@@ -177,6 +177,7 @@ async function AffichageImagesModale(response) {
         console.log(btnDelete);
         // img.appendChild(btnDelete);
         console.log(btnDelete.id);
+        
 
 
 

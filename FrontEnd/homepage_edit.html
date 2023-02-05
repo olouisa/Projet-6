@@ -48,13 +48,14 @@
                     <div id="picture"> <i class="fa-solid fa-image"></i>
                     </div>
                     <form id="formPhoto" method="post" url="/upload-picture" enctype="multipart/form-data" >
+                        <label for="input-file" id="btn_ajouterUnePhoto">+ Ajouter photo</label>
 
-                        <input type="file" id="input-file" name="pictureUploaded"  required >
+                        <input type="file" id="input-file" name="pictureUploaded"  style="visibility:hidden;" required >
                         
-                        <button type="submit" id="btn_ajouterUnePhoto">+ Ajouter photo</button>
-                        
+                        <!-- <button type="submit" id="btn_ajouterUnePhoto">+ Ajouter photo</button> -->
+                        <p id="type-taille">jpg, png : 4mo max</p>
+
                         </form>
-                    <p id="type-taille">jpg, png : 4mo max</p>
                 </div>
 
                 <div id="formulaires">
