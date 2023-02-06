@@ -177,6 +177,8 @@ async function AffichageImagesModale(response) {
         console.log(btnDelete);
         // img.appendChild(btnDelete);
         console.log(btnDelete.id);
+
+        const btnDeleteAll = document.querySelector(".supprimer_gallerie");
         
 
 
@@ -198,6 +200,9 @@ async function AffichageImagesModale(response) {
 
         btnDelete.addEventListener("click", () => deleteWorks(response[i].id)
         );
+        btnDeleteAll.addEventListener("click", () => deleteWorks(response[i+1].id));
+        btnDeleteAll.addEventListener("click", () => deleteWorks(response[i--].id));
+
 
 
     }
@@ -231,9 +236,10 @@ async function deleteWorks(_id) {
     })
     console.log(response);
     return response;
-
-
 }
+
+
+
 
 // Aller vers la modale d'ajout
 const bntAjouterPhoto = document.querySelector("#btn_ajouterPhoto");
@@ -328,22 +334,23 @@ form.addEventListener("submit", async function (e) {
     console.log(token);
     let userId = localStorage.getItem("userId");
     console.log(userId);
+    
 
 
     let title = document.querySelector("#title").value;
     console.log(title);
-    let categoryId = document.querySelector("#categoryId").value;
+    let categoryId = document.querySelector("#categoryId").options[document.querySelector("#categoryId").selectedIndex].id;
     console.log(categoryId);
     // let userId = document.querySelector("#userId").value;
     // console.log(userId);
-    let id = document.querySelector("#id").value;
-    console.log(id);
+    // let id = document.querySelector("#id").value;
+    // console.log(id);
     let inputFile = document.querySelector("#input-file").value;
     console.log(inputFile);
 
     let body =
     {
-        // "id": [],
+        "id": `${Number}`,
         "title": title,
         "imageUrl": inputFile,
         "categoryId": categoryId,
@@ -357,7 +364,7 @@ form.addEventListener("submit", async function (e) {
         headers: {
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`,
-            // 'Content-Type': 'multipart/form-data'
+            'Content-Type': 'application/json'
         }
     })
 
