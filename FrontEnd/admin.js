@@ -312,10 +312,20 @@ inputFile.addEventListener("change", function (e) {
             canvasContext.drawImage(image, 0, 0, 300, 193);
         };
 
+canvas.toBlob((blob) => {
+    const newImg = document.createElement('img');
+    const url = URL.createObjectURL(blob);
+    newImg.onload = () => {
+        URL.revokeObjectURL(url);
+      };
+    
+      newImg.src = url;
+      picture.appendChild(newImg);
+      console.log(newImg.src);
+    });
+})
 
-
-
-    })
+    
 
 
     reader.readAsDataURL(inputFile.files[0]);
