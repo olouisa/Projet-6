@@ -177,9 +177,13 @@ async function AffichageImagesModale(response) {
         console.log(btnDelete);
         // img.appendChild(btnDelete);
         console.log(btnDelete.id);
+        const icone = document.createElement("img");
+        icone.setAttribute("href", `<i class="fa-regular fa-trash-can"></i>`);
+        console.log(icone);
+        btnDelete.appendChild(icone);
 
         const btnDeleteAll = document.querySelector(".supprimer_gallerie");
-        
+
 
 
 
@@ -200,7 +204,7 @@ async function AffichageImagesModale(response) {
 
         btnDelete.addEventListener("click", () => deleteWorks(response[i].id)
         );
-        btnDeleteAll.addEventListener("click", () => deleteWorks(response[i+1].id));
+        btnDeleteAll.addEventListener("click", () => deleteWorks(response[i++].id));
         btnDeleteAll.addEventListener("click", () => deleteWorks(response[i--].id));
 
 
@@ -296,7 +300,7 @@ inputFile.addEventListener("change", function (e) {
         let canvas = document.createElement("canvas");
         picture.appendChild(canvas);
         canvas.style.width = "129px";
-        canvas.style.height ="169px";
+        canvas.style.height = "169px";
 
 
         let canvasContext = canvas.getContext("2d");
@@ -304,10 +308,10 @@ inputFile.addEventListener("change", function (e) {
         console.log(image.src);
 
         // canvasContext.drawImage(image, 0, 0, 50, 100);
-        image.onload = function() {
+        image.onload = function () {
             canvasContext.drawImage(image, 0, 0, 300, 193);
-          };
-         
+        };
+
 
 
 
@@ -326,6 +330,7 @@ inputFile.addEventListener("change", function (e) {
 
 
 // Ajouter des travaux
+
 let form = document.querySelector("#form-ajout");
 console.log(form);
 form.addEventListener("submit", async function (e) {
@@ -334,41 +339,32 @@ form.addEventListener("submit", async function (e) {
     console.log(token);
     let userId = localStorage.getItem("userId");
     console.log(userId);
-    
-
-
-    let title = document.querySelector("#title").value;
+    let title = document.querySelector("#title");
     console.log(title);
     let categoryId = document.querySelector("#categoryId").options[document.querySelector("#categoryId").selectedIndex].id;
     console.log(categoryId);
-    // let userId = document.querySelector("#userId").value;
-    // console.log(userId);
-    // let id = document.querySelector("#id").value;
-    // console.log(id);
-    let inputFile = document.querySelector("#input-file").value;
+    let inputFile = document.querySelector("#input-file");
     console.log(inputFile);
 
-    let body =
-    {
-        "id": `${Number}`,
-        "title": title,
-        "imageUrl": inputFile,
-        "categoryId": categoryId,
-        "userId": `${userId}`
-    }
-    console.log(body);
 
+    const formData = new FormData();
+    // const data = new URLSearchParams(formData);
+    formData.append("title", title);
+    formData.append("categoryId", categoryId);
+    formData.append("imageUrl", inputFile);
+    formData.append("userId", userId);
+
+    
     const response = await fetch("http://localhost:5678/api/works", {
         method: "POST",
-        body: JSON.stringify(body),
+        body: formData,
         headers: {
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
+            // 'Content-Type': 'multipart/form-data'
         }
     })
 
-    console.log(body);
     return await response.json();
     console.log(response);
 });
@@ -376,45 +372,18 @@ form.addEventListener("submit", async function (e) {
 
 
 
+// function valider() {
+//     let title = document.querySelector("#title").value;
+//     console.log(title);
+//     let categoryId = document.querySelector("#categoryId").options[document.querySelector("#categoryId").selectedIndex].id;
+//     console.log(categoryId);
+//     let inputFile = document.querySelector("#input-file").value;
+//     console.log(inputFile);
+//     const btnValider = document.querySelector("#valider-ajout");
 
-
-
-async function ajouterWork() {
-    // let token = localStorage.getItem("token");
-    // console.log(token);
-
-    // let title = document.querySelector("#title");
-    // console.log(title);
-    // let categoryId = document.querySelector("#categoryId");
-    // console.log(categoryId);
-    // let userId = document.querySelector("#userId");
-    // console.log(userId);
-    // id = document.querySelector("#id");
-    // console.log(id);
-
-    // let body =
-    // {
-    //     "id": 16,
-    //     "title": "La balisière",
-    //     "imageUrl": "http://localhost:5678/images/la-balisiere1675203882183.png",
-    //     "categoryId": "3",
-    //     "userId": 1
-    //   }
-    //   console.log(body);
-    // const response = await fetch("http://localhost:5678/api/works", {
-    //     method: "POST",
-    //     body: JSON.stringify(body),
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Authorization': `Bearer ${token}`,
-    //         'Content-Type': 'multipart/form-data'
-    //     }
-    // })
-
-    // console.log(body);
-    // return await response.json();
-    // console.log(response);
-
-
-}
-// ajouterWork();
+//     if(title ==="") {
+//         btnValider.style.backgroundColor = "rgba(29, 97, 84, 1)";
+//         console.log("ok");
+//     }
+// }
+// ;
