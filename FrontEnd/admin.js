@@ -271,25 +271,27 @@ bntRetour.addEventListener("click", (e) => {
 const inputFile = document.querySelector("#input-file");
 console.log(inputFile);
 inputFile.addEventListener("change", function (e) {
+    e.preventDefault();
     const picture = document.querySelector("#picture");
-    picture.style.width = "129px";
-    picture.style.height = "193px";
-    const pictureSpace = document.querySelector("#picture-space");
+    // picture.style.width = "129px";
+    // picture.style.height = "193px";
+    // const pictureSpace = document.querySelector("#picture-space");
     const logo = document.querySelector(".fa-image");
     console.log(logo);
-    let reader = new FileReader();
+    imgSelect = document.createElement("img");
+    imgSelect.src = URL.createObjectURL(e.target.files[0]);
+    picture.appendChild(imgSelect);
+    console.log(imgSelect);
+    imgSelect.style.width = "129px";
+    imgSelect.style.height = "170px";
 
-    reader.addEventListener("load", function () {
-
-        logo.style.display = "none";
-        let image = document.createElement('img');
-        image.src = reader.result;
-        let result = image.src;
-        // result.style.width = "50px";
-        picture.appendChild(image);
-        image.style.display = "none";
-        // console.log(reader.result);
-        console.log(picture);
+    logo.style.display = "none";
+    //     let image = document.createElement('img');
+    //     image.src = reader.result;
+    //     let result = image.src;
+    //     picture.appendChild(image);
+    //     image.style.display = "none";
+    //     console.log(picture);
 
         formPhoto = document.querySelector("#formPhoto");
         formPhoto.style.display = "none";
@@ -297,38 +299,55 @@ inputFile.addEventListener("change", function (e) {
         formatPhoto.style.display = "none";
 
 
-        let canvas = document.createElement("canvas");
-        picture.appendChild(canvas);
-        canvas.style.width = "129px";
-        canvas.style.height = "169px";
+    // let reader = new FileReader();
+
+    // reader.addEventListener("load", function () {
+
+    //     logo.style.display = "none";
+    //     let image = document.createElement('img');
+    //     image.src = reader.result;
+    //     let result = image.src;
+    //     picture.appendChild(image);
+    //     image.style.display = "none";
+    //     console.log(picture);
+
+    //     formPhoto = document.querySelector("#formPhoto");
+    //     formPhoto.style.display = "none";
+    //     formatPhoto = document.querySelector("#type-taille");
+    //     formatPhoto.style.display = "none";
 
 
-        let canvasContext = canvas.getContext("2d");
-        console.log(canvas);
-        console.log(image.src);
+    //     let canvas = document.createElement("canvas");
+    //     picture.appendChild(canvas);
+    //     canvas.style.width = "129px";
+    //     canvas.style.height = "169px";
 
-        // canvasContext.drawImage(image, 0, 0, 50, 100);
-        image.onload = function () {
-            canvasContext.drawImage(image, 0, 0, 300, 193);
-        };
 
-canvas.toBlob((blob) => {
-    const newImg = document.createElement('img');
-    const url = URL.createObjectURL(blob);
-    newImg.onload = () => {
-        URL.revokeObjectURL(url);
-      };
+    //     let canvasContext = canvas.getContext("2d");
+    //     console.log(canvas);
+    //     console.log(image.src);
+
+    //     image.onload = function () {
+    //         canvasContext.drawImage(image, 0, 0, 300, 193);
+    //     };
+
+// canvas.toBlob((blob) => {
+//     const newImg = document.createElement('img');
+//     const url = URL.createObjectURL(blob);
+//     newImg.onload = () => {
+//         URL.revokeObjectURL(url);
+//       };
     
-      newImg.src = url;
-      picture.appendChild(newImg);
-      console.log(newImg.src);
-    });
-})
+//       newImg.src = url;
+//       picture.appendChild(newImg);
+//       console.log(newImg.src);
+//     });
+// })
 
     
 
 
-    reader.readAsDataURL(inputFile.files[0]);
+    // reader.readAsDataURL(inputFile.files[0]);
     console.log('Done');
 });
 
@@ -359,10 +378,10 @@ form.addEventListener("submit", async function (e) {
 
     const formData = new FormData();
     // const data = new URLSearchParams(formData);
-    formData.append("title", title);
-    formData.append("categoryId", categoryId);
-    formData.append("imageUrl", inputFile);
-    formData.append("userId", userId);
+    formData.append("title", title.value);
+    formData.append("category", categoryId.value);
+    formData.append("image", inputFile.files[0]);
+    // formData.append("userId", userId);
 
     
     const response = await fetch("http://localhost:5678/api/works", {
