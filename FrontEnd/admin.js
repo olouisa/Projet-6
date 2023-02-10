@@ -161,7 +161,6 @@ async function AffichageImagesModale(response) {
         img.setAttribute("crossorigin", "anonymous");
         img.style.width = "78px";
         img.style.height = "104px";
-        // img.innerHTML = '<a href="#"><button><i class="fa-solid fa-trash-can"></i></button></a>';
 
         console.log(img);
 
@@ -174,12 +173,17 @@ async function AffichageImagesModale(response) {
         btnDelete.style.height = "17px";
         btnDelete.style.top = "5px";
         btnDelete.style.right = "6px";
+        btnDelete.style.display = "flex";
+        btnDelete.style.justifyContent = "center";
+
         console.log(btnDelete);
-        // img.appendChild(btnDelete);
         console.log(btnDelete.id);
-        const icone = document.createElement("img");
-        icone.setAttribute("href", `<i class="fa-regular fa-trash-can"></i>`);
-        console.log(icone);
+
+        icone = document.createElement("i");
+        icone.classList.add("fa-regular");
+        icone.classList.add("fa-trash-can");
+        icone.style.color = "white";
+        icone.style.fontSize = "11px";
         btnDelete.appendChild(icone);
 
         const btnDeleteAll = document.querySelector(".supprimer_gallerie");
@@ -273,30 +277,25 @@ console.log(inputFile);
 inputFile.addEventListener("change", function (e) {
     e.preventDefault();
     const picture = document.querySelector("#picture");
-    // picture.style.width = "129px";
-    // picture.style.height = "193px";
-    // const pictureSpace = document.querySelector("#picture-space");
     const logo = document.querySelector(".fa-image");
     console.log(logo);
     imgSelect = document.createElement("img");
-    imgSelect.src = URL.createObjectURL(e.target.files[0]);
+    imgSelect.src = URL.createObjectURL(inputFile.files[0]);
     picture.appendChild(imgSelect);
     console.log(imgSelect);
     imgSelect.style.width = "129px";
     imgSelect.style.height = "170px";
 
     logo.style.display = "none";
-    //     let image = document.createElement('img');
-    //     image.src = reader.result;
-    //     let result = image.src;
-    //     picture.appendChild(image);
-    //     image.style.display = "none";
-    //     console.log(picture);
+    formPhoto = document.querySelector("#formPhoto");
+    formPhoto.style.display = "none";
+    formatPhoto = document.querySelector("#type-taille");
+    formatPhoto.style.display = "none";
 
-        formPhoto = document.querySelector("#formPhoto");
-        formPhoto.style.display = "none";
-        formatPhoto = document.querySelector("#type-taille");
-        formatPhoto.style.display = "none";
+    imgSelect.onload = function () {
+        URL.revokeObjectURL(imgSelect.src);
+    };
+
 
 
     // let reader = new FileReader();
@@ -331,20 +330,20 @@ inputFile.addEventListener("change", function (e) {
     //         canvasContext.drawImage(image, 0, 0, 300, 193);
     //     };
 
-// canvas.toBlob((blob) => {
-//     const newImg = document.createElement('img');
-//     const url = URL.createObjectURL(blob);
-//     newImg.onload = () => {
-//         URL.revokeObjectURL(url);
-//       };
-    
-//       newImg.src = url;
-//       picture.appendChild(newImg);
-//       console.log(newImg.src);
-//     });
-// })
+    // canvas.toBlob((blob) => {
+    //     const newImg = document.createElement('img');
+    //     const url = URL.createObjectURL(blob);
+    //     newImg.onload = () => {
+    //         URL.revokeObjectURL(url);
+    //       };
 
-    
+    //       newImg.src = url;
+    //       picture.appendChild(newImg);
+    //       console.log(newImg.src);
+    //     });
+    // })
+
+
 
 
     // reader.readAsDataURL(inputFile.files[0]);
@@ -383,7 +382,7 @@ form.addEventListener("submit", async function (e) {
     formData.append("image", inputFile.files[0]);
     // formData.append("userId", userId);
 
-    
+
     const response = await fetch("http://localhost:5678/api/works", {
         method: "POST",
         body: formData,
@@ -396,6 +395,7 @@ form.addEventListener("submit", async function (e) {
 
     return await response.json();
     console.log(response);
+    console.log(response.json);
 });
 
 
