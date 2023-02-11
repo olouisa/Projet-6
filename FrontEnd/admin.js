@@ -274,6 +274,7 @@ bntRetour.addEventListener("click", (e) => {
 // Sélectionner et Prévisualiser l'image 
 const inputFile = document.querySelector("#input-file");
 console.log(inputFile);
+
 inputFile.addEventListener("change", function (e) {
     e.preventDefault();
     const picture = document.querySelector("#picture");
@@ -361,8 +362,14 @@ inputFile.addEventListener("change", function (e) {
 
 let form = document.querySelector("#form-ajout");
 console.log(form);
+const title = document.querySelector("#title");
+const categoryId = document.querySelector("#categoryId");
+// .options[document.querySelector("#categoryId").selectedIndex].id;
+const btn_ajouterUnePhoto = document.querySelector("#btn_ajouterUnePhoto");
+
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
+    // verificationInputs();
     let token = localStorage.getItem("token");
     console.log(token);
     let userId = localStorage.getItem("userId");
@@ -373,7 +380,8 @@ form.addEventListener("submit", async function (e) {
     console.log(categoryId);
     let inputFile = document.querySelector("#input-file");
     console.log(inputFile);
-
+    let erreurMsg = document.querySelector("#erreur");
+    console.log(erreurMsg);
 
     const formData = new FormData();
     // const data = new URLSearchParams(formData);
@@ -399,20 +407,37 @@ form.addEventListener("submit", async function (e) {
 });
 
 
+// Vérification du formulaire (essai avec "focus" et "click")
+title.addEventListener("focus", verificationInputs);
+categoryId.addEventListener("focus", verificationInputs);
+btn_ajouterUnePhoto.addEventListener("click", verificationInputs);
 
+function verificationInputs() {
+    const titleValue = document.querySelector("#title").value;
+    const categoryIdValue = document.querySelector("#categoryId").value;
+    // .options[document.querySelector("#categoryId").selectedIndex].id;
+    const inputFileValue = document.querySelector("#input-file").value;
+    console.log(titleValue);
 
-// function valider() {
-//     let title = document.querySelector("#title").value;
-//     console.log(title);
-//     let categoryId = document.querySelector("#categoryId").options[document.querySelector("#categoryId").selectedIndex].id;
-//     console.log(categoryId);
-//     let inputFile = document.querySelector("#input-file").value;
-//     console.log(inputFile);
-//     const btnValider = document.querySelector("#valider-ajout");
+    // Vérification du titre
+    if (titleValue === "") {
+        let errorTitle = document.querySelector(".errorTitle");
+        // errorTitle.style.color = "red";
+        errorTitle.innerHTML = "Veuillez choisir un titre";
+        console.log(errorTitle);
+    }
 
-//     if(title ==="") {
-//         btnValider.style.backgroundColor = "rgba(29, 97, 84, 1)";
-//         console.log("ok");
-//     }
-// }
-// ;
+    // Vérification du champs catégories
+    if (categoryIdValue === "") {
+        let errorCategory = document.querySelector(".errorCategory");
+        errorCategory.innerHTML = "Veuillez choisir une catégorie";
+
+    }
+
+    // Vérification du champs image
+    if (inputFileValue === "") {
+        let errorPhoto = document.querySelector(".errorPhoto");
+        errorPhoto.innerHTML = "Veuillez sélectionner une image";
+
+    }
+};

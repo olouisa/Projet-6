@@ -63,27 +63,29 @@
                             <div id="formPhoto">
                                 <label for="input-file" id="btn_ajouterUnePhoto">+ Ajouter photo</label>
 
-                                <input type="file" id="input-file" name="image" style="visibility:hidden;"
-                                    required>
+                                <input type="file" id="input-file" name="image" style="visibility:hidden;">
 
                                 <p id="type-taille">jpg, png : 4mo max</p>
+                                <p class= "errorMessage errorPhoto"></p>
                             </div>
                         </div>
 
                         <label for="title">Titre</label> <br />
-                        <input id="title" type="text" name="title" value="" required>
+                        <input id="title" type="text" name="title" value="">
+                        <p class= "errorMessage errorTitle"></p>
+
 
 
                         <label for="category">Catégorie</label><br />
-                        <select name="category" id="categoryId" required>
+                        <select name="category" id="categoryId">
                             <option value=""></option>
                             <option id="1" value="Objets">Objets</option>
                             <option id="2" value="Appartements">Appartements</option>
                             <option id="3 " value="Hotels & restaurants">Hotels & restaurants</option>
                         </select>
 
-                        <!-- <input id="id" type="hidden" name="id" value=""> -->
-                        <!-- <input id="userId" type="hidden" name="userId" value=""> -->
+                        <p class= "errorMessage errorCategory"></p>
+
 
                         <input id="valider-ajout" type="submit" value="Valider">
 

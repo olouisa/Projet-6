@@ -632,7 +632,7 @@ footer nav ul {
 
 }
 
-#form-ajout input,
+
 #form-ajout option {
 	font-family: 'Work Sans';
 	font-style: normal;
@@ -641,6 +641,14 @@ footer nav ul {
 	line-height: 16px;
 	color: #444444;
 
+}
+#valider-ajout  {
+	color: white;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
 }
 
 #btn_ajouterUnePhoto {
@@ -688,10 +696,12 @@ footer nav ul {
 	border: transparent;
 }
 
-#valider-ajout {
-	background: rgba(167, 167, 167, 1);
-
+.errorMessage {
+	color: red;
+	font-size: 12px;
 }
+
+
 
 .supprimer_gallerie {
 	color: rgba(214, 83, 83, 1);
