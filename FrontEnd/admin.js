@@ -315,6 +315,7 @@ const btn_ajouterUnePhoto = document.querySelector("#btn_ajouterUnePhoto");
 
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
+
     let token = localStorage.getItem("token");
     console.log(token);
     let userId = localStorage.getItem("userId");
@@ -384,7 +385,8 @@ form.addEventListener("submit", async function (e) {
     return await response.json();
     console.log(response);
     console.log(response.json);
-});
+
+    });
 
 // Validation du formulaire
 const btnValider = document.querySelector("#valider-ajout");
