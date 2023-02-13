@@ -259,6 +259,7 @@ bntAjouterPhoto.addEventListener("click", (e) => {
     e.preventDefault();
     Modale1.style.display = "none";
     Modale2.style.display = "flex";
+    verify_inputs();
 })
 
 // Retourner à la modale de suppression
@@ -293,13 +294,25 @@ inputFile.addEventListener("change", function (e) {
     formatPhoto = document.querySelector("#type-taille");
     formatPhoto.style.display = "none";
 
+    // imgSelect.onload = function () {
+    //     URL.revokeObjectURL(imgSelect.src);   
+        let size = inputFile.files[0].size;
+        console.log(size);
+if(size < 4000000){
     imgSelect.onload = function () {
-        URL.revokeObjectURL(imgSelect.src);
-
-    };
-
-
-
+        URL.revokeObjectURL(imgSelect.src); }
+            console.log("bonne taille");
+         
+      } else {
+        console.log("trop volumineux")
+        let errorPhoto = document.querySelector(".errorPhoto");
+        errorPhoto.innerHTML = "Votre fichier est trop volumineux";
+        imgSelect.src = "";
+        imgSelect.style.display = "none";
+        logo.style.display = "flex";
+        formatPhoto.style.display = "flex";
+        formPhoto.style.display = "flex";
+       }
 
     console.log('Done');
 });
@@ -333,10 +346,10 @@ form.addEventListener("submit", async function (e) {
     formData.append("category", categoryId);
     formData.append("image", inputFile.files[0]);
 
-    const titleValue = document.querySelector("#title").value;
-    const categoryIdValue = document.querySelector("#categoryId").value;
-    const inputFileValue = document.querySelector("#input-file").value;
-    console.log(titleValue);
+    // const titleValue = document.querySelector("#title").value;
+    // const categoryIdValue = document.querySelector("#categoryId").value;
+    // const inputFileValue = document.querySelector("#input-file").value;
+    // console.log(titleValue);
 
 
 
@@ -382,11 +395,11 @@ form.addEventListener("submit", async function (e) {
         }
     })
 
-    return await response.json();
+    const response2 = await response.json();
     console.log(response);
-    console.log(response.json);
+    console.log(response2.json);
 
-    });
+});
 
 // Validation du formulaire
 const btnValider = document.querySelector("#valider-ajout");
