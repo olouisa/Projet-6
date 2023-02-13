@@ -63,7 +63,7 @@
                             <div id="formPhoto">
                                 <label for="input-file" id="btn_ajouterUnePhoto">+ Ajouter photo</label>
 
-                                <input type="file" id="input-file" name="image" style="visibility:hidden;">
+                                <input type="file" id="input-file" name="image" accept=".jpg, .png" style="visibility:hidden;">
 
                                 <p id="type-taille">jpg, png : 4mo max</p>
                                 <p class= "errorMessage errorPhoto"></p>
@@ -86,8 +86,10 @@
 
                         <p class= "errorMessage errorCategory"></p>
 
+                        <p class= "errorMessage errorGeneral"></p>
 
-                        <input id="valider-ajout" type="submit" value="Valider">
+                        <input id="valider-ajout" type="submit" value="Valider" >
+
 
                     </form>
                 </div>

@@ -550,9 +550,11 @@ footer nav ul {
 	border-bottom: 1px solid rgba(179, 179, 179, 1);
 }
 
-#modal_gallery, .modale-opaque {
+#modal_gallery,
+.modale-opaque {
 	padding-bottom: 30px;
 }
+
 #picture-space {
 	display: flex;
 	flex-direction: column;
@@ -605,7 +607,7 @@ footer nav ul {
 
 #form-ajout {
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
 }
 
 #title,
@@ -621,7 +623,7 @@ footer nav ul {
 
 
 #form-ajout label {
-	
+
 	font-family: 'Work Sans';
 	font-style: normal;
 	font-weight: 500;
@@ -642,13 +644,16 @@ footer nav ul {
 	color: #444444;
 
 }
-#valider-ajout  {
+
+#valider-ajout {
 	color: white;
 	font-family: 'Work Sans';
 	font-style: normal;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 16px;
+	/* filter: grayscale(1); */
+	background: rgba(167, 167, 167, 1);
 }
 
 #btn_ajouterUnePhoto {
@@ -665,8 +670,8 @@ footer nav ul {
 	/* text-align: center; */
 	color: rgba(48, 102, 133, 1);
 	display: flex;
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
 }
 
 
@@ -699,6 +704,12 @@ footer nav ul {
 .errorMessage {
 	color: red;
 	font-size: 12px;
+}
+
+.errorGeneral {
+	align-self: center;
+	padding-top: 23px;
+	font-size: 14px;
 }
 
 

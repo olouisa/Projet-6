@@ -295,67 +295,14 @@ inputFile.addEventListener("change", function (e) {
 
     imgSelect.onload = function () {
         URL.revokeObjectURL(imgSelect.src);
+
     };
 
 
 
-    // let reader = new FileReader();
 
-    // reader.addEventListener("load", function () {
-
-    //     logo.style.display = "none";
-    //     let image = document.createElement('img');
-    //     image.src = reader.result;
-    //     let result = image.src;
-    //     picture.appendChild(image);
-    //     image.style.display = "none";
-    //     console.log(picture);
-
-    //     formPhoto = document.querySelector("#formPhoto");
-    //     formPhoto.style.display = "none";
-    //     formatPhoto = document.querySelector("#type-taille");
-    //     formatPhoto.style.display = "none";
-
-
-    //     let canvas = document.createElement("canvas");
-    //     picture.appendChild(canvas);
-    //     canvas.style.width = "129px";
-    //     canvas.style.height = "169px";
-
-
-    //     let canvasContext = canvas.getContext("2d");
-    //     console.log(canvas);
-    //     console.log(image.src);
-
-    //     image.onload = function () {
-    //         canvasContext.drawImage(image, 0, 0, 300, 193);
-    //     };
-
-    // canvas.toBlob((blob) => {
-    //     const newImg = document.createElement('img');
-    //     const url = URL.createObjectURL(blob);
-    //     newImg.onload = () => {
-    //         URL.revokeObjectURL(url);
-    //       };
-
-    //       newImg.src = url;
-    //       picture.appendChild(newImg);
-    //       console.log(newImg.src);
-    //     });
-    // })
-
-
-
-
-    // reader.readAsDataURL(inputFile.files[0]);
     console.log('Done');
 });
-
-
-
-
-
-
 
 
 // Ajouter des travaux
@@ -364,12 +311,10 @@ let form = document.querySelector("#form-ajout");
 console.log(form);
 const title = document.querySelector("#title");
 const categoryId = document.querySelector("#categoryId");
-// .options[document.querySelector("#categoryId").selectedIndex].id;
 const btn_ajouterUnePhoto = document.querySelector("#btn_ajouterUnePhoto");
 
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
-    // verificationInputs();
     let token = localStorage.getItem("token");
     console.log(token);
     let userId = localStorage.getItem("userId");
@@ -380,15 +325,51 @@ form.addEventListener("submit", async function (e) {
     console.log(categoryId);
     let inputFile = document.querySelector("#input-file");
     console.log(inputFile);
-    let erreurMsg = document.querySelector("#erreur");
-    console.log(erreurMsg);
+
 
     const formData = new FormData();
-    // const data = new URLSearchParams(formData);
     formData.append("title", title.value);
-    formData.append("category", categoryId.value);
+    formData.append("category", categoryId);
     formData.append("image", inputFile.files[0]);
-    // formData.append("userId", userId);
+
+    const titleValue = document.querySelector("#title").value;
+    const categoryIdValue = document.querySelector("#categoryId").value;
+    const inputFileValue = document.querySelector("#input-file").value;
+    console.log(titleValue);
+
+
+
+
+    // Vérification du champs image
+
+
+    // if (inputFileValue === "") {
+    //     e.preventDefault();
+    //     let errorPhoto = document.querySelector(".errorPhoto");
+    //     errorPhoto.innerHTML = "Veuillez sélectionner une image";
+    //     return false;
+
+    // };
+
+    // Vérification du titre
+    // if (titleValue === "") {
+    //     e.preventDefault();
+    //     let errorTitle = document.querySelector(".errorTitle");
+    //     // errorTitle.style.color = "red";
+    //     errorTitle.innerHTML = "Veuillez choisir un titre";
+    //     console.log(errorTitle);
+    //     return false;
+    // };
+
+    // // Vérification du champs catégories
+    // if (categoryIdValue === "") {
+    //     e.preventDefault();
+    //     let errorCategory = document.querySelector(".errorCategory");
+    //     errorCategory.innerHTML = "Veuillez choisir une catégorie";
+    //     return false;
+
+    // };
+
 
 
     const response = await fetch("http://localhost:5678/api/works", {
@@ -397,7 +378,6 @@ form.addEventListener("submit", async function (e) {
         headers: {
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`,
-            // 'Content-Type': 'multipart/form-data'
         }
     })
 
@@ -406,38 +386,61 @@ form.addEventListener("submit", async function (e) {
     console.log(response.json);
 });
 
+// Validation du formulaire
+const btnValider = document.querySelector("#valider-ajout");
+title.addEventListener("change", verify_inputs);
+categoryId.addEventListener("change", verify_inputs);
+btn_ajouterUnePhoto.addEventListener("change", verify_inputs);
 
-// Vérification du formulaire (essai avec "focus" et "click")
-title.addEventListener("focus", verificationInputs);
-categoryId.addEventListener("focus", verificationInputs);
-btn_ajouterUnePhoto.addEventListener("click", verificationInputs);
 
-function verificationInputs() {
+async function verify_inputs() {
     const titleValue = document.querySelector("#title").value;
     const categoryIdValue = document.querySelector("#categoryId").value;
-    // .options[document.querySelector("#categoryId").selectedIndex].id;
     const inputFileValue = document.querySelector("#input-file").value;
-    console.log(titleValue);
+    console.log(inputFileValue);
+    inputs = form.getElementsByTagName("input");
 
-    // Vérification du titre
-    if (titleValue === "") {
-        let errorTitle = document.querySelector(".errorTitle");
-        // errorTitle.style.color = "red";
-        errorTitle.innerHTML = "Veuillez choisir un titre";
-        console.log(errorTitle);
+
+    if (titleValue !== "" && categoryIdValue !== "" && inputFileValue !== "") {
+        console.log("fomulaire complet");
+        const btnValider = document.querySelector("#valider-ajout");
+        const errorGeneral = document.querySelector(".errorGeneral");
+
+        btnValider.style.backgroundColor = "rgba(29, 97, 84, 1)";
+        btnValider.disabled = false;
+        console.log(btnValider.disabled);
+        errorGeneral.innerHTML = "";
+
+
+    } else {
+        const btnValider = document.querySelector("#valider-ajout");
+        const errorGeneral = document.querySelector(".errorGeneral");
+        btnValider.style.backgroundColor = "rgba(167, 167, 167, 1)";
+        btnValider.disabled = true;
+        console.log(btnValider.disabled);
+        errorGeneral.innerHTML = "Veuillez remplir tous les champs";
+
+
     }
 
-    // Vérification du champs catégories
-    if (categoryIdValue === "") {
-        let errorCategory = document.querySelector(".errorCategory");
-        errorCategory.innerHTML = "Veuillez choisir une catégorie";
+    // for (let i = 0; i<inputs.length; i++) {
+    //     console.log(inputs[i]);
+    //     if (!inputs[i].value) {        
+    // const btnValider = document.querySelector("#valider-ajout");
+    // btnValider.style.backgroundColor= "rgba(167, 167, 167, 1)";
+    // btnValider.disabled = true;
+    // console.log(btnValider.disabled);
+    //     } else {
+    //              const btnValider = document.querySelector("#valider-ajout");
+    // btnValider.style.backgroundColor= "rgba(29, 97, 84, 1)";
+    // btnValider.disabled = false;
 
-    }
+    // console.log(btnValider.disabled);
 
-    // Vérification du champs image
-    if (inputFileValue === "") {
-        let errorPhoto = document.querySelector(".errorPhoto");
-        errorPhoto.innerHTML = "Veuillez sélectionner une image";
+    //     }
+    // }  
+}
 
-    }
-};
+
+
+
