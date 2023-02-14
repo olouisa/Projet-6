@@ -1,43 +1,3 @@
-
-
-// let user = {
-//     email: "sophie.bluel@test.tld",
-//     password: "S0phie"
-// };
-// fetch("http://localhost:5678/api/users/login", {
-//     method: "post",
-//     headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(user)
-
-// })
-//     .then(response => response.json())
-//     .then(response1 => {
-//         console.log(response1)
-//     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Récupération des catégories
 fetch("http://localhost:5678/api/categories", {
     headers: {
@@ -149,26 +109,6 @@ const btntous = document.querySelector("#tous");
 btntous.addEventListener("click", function () {
     AfficherTousWorks();
 });
-
-
-
-
-// Route Works avec la méthode POST:
-// fetch("http://localhost:5678/api/works", {
-//     method: "post",
-//     headers: {
-//         'Accept': 'application/json',
-//         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3MjE4NTg4MCwiZXhwIjoxNjcyMjcyMjgwfQ.XVCc74rr73yBxGunE2AHTssTHdWQIPNPmvXYju6QdSI',
-//         'Content-Type': 'multipart/form-data'
-//     }
-//     // body: JSON.stringify({
-
-//     // })
-// })
-//     .then(response => response.json())
-//     .then(response2 => console.log(response2));
-
-
 
 
 

@@ -233,7 +233,6 @@ async function deleteWorks(_id) {
 
     const response = await fetch(`http://localhost:5678/api/works/${_id}`, {
         method: "DELETE",
-        // body: null,
         headers: {
             'Accept': '*/*',
             'Authorization': `Bearer ${token}`
@@ -294,16 +293,16 @@ inputFile.addEventListener("change", function (e) {
     formatPhoto = document.querySelector("#type-taille");
     formatPhoto.style.display = "none";
 
-    // imgSelect.onload = function () {
-    //     URL.revokeObjectURL(imgSelect.src);   
-        let size = inputFile.files[0].size;
-        console.log(size);
-if(size < 4000000){
-    imgSelect.onload = function () {
-        URL.revokeObjectURL(imgSelect.src); }
-            console.log("bonne taille");
-         
-      } else {
+
+    let size = inputFile.files[0].size;
+    console.log(size);
+    if (size < 4000000) {
+        imgSelect.onload = function () {
+            URL.revokeObjectURL(imgSelect.src);
+        }
+        console.log("bonne taille");
+
+    } else {
         console.log("trop volumineux")
         let errorPhoto = document.querySelector(".errorPhoto");
         errorPhoto.innerHTML = "Votre fichier est trop volumineux";
@@ -312,7 +311,7 @@ if(size < 4000000){
         logo.style.display = "flex";
         formatPhoto.style.display = "flex";
         formPhoto.style.display = "flex";
-       }
+    }
 
     console.log('Done');
 });
@@ -346,43 +345,6 @@ form.addEventListener("submit", async function (e) {
     formData.append("category", categoryId);
     formData.append("image", inputFile.files[0]);
 
-    // const titleValue = document.querySelector("#title").value;
-    // const categoryIdValue = document.querySelector("#categoryId").value;
-    // const inputFileValue = document.querySelector("#input-file").value;
-    // console.log(titleValue);
-
-
-
-
-    // Vérification du champs image
-
-
-    // if (inputFileValue === "") {
-    //     e.preventDefault();
-    //     let errorPhoto = document.querySelector(".errorPhoto");
-    //     errorPhoto.innerHTML = "Veuillez sélectionner une image";
-    //     return false;
-
-    // };
-
-    // Vérification du titre
-    // if (titleValue === "") {
-    //     e.preventDefault();
-    //     let errorTitle = document.querySelector(".errorTitle");
-    //     // errorTitle.style.color = "red";
-    //     errorTitle.innerHTML = "Veuillez choisir un titre";
-    //     console.log(errorTitle);
-    //     return false;
-    // };
-
-    // // Vérification du champs catégories
-    // if (categoryIdValue === "") {
-    //     e.preventDefault();
-    //     let errorCategory = document.querySelector(".errorCategory");
-    //     errorCategory.innerHTML = "Veuillez choisir une catégorie";
-    //     return false;
-
-    // };
 
 
 
@@ -438,22 +400,6 @@ async function verify_inputs() {
 
     }
 
-    // for (let i = 0; i<inputs.length; i++) {
-    //     console.log(inputs[i]);
-    //     if (!inputs[i].value) {        
-    // const btnValider = document.querySelector("#valider-ajout");
-    // btnValider.style.backgroundColor= "rgba(167, 167, 167, 1)";
-    // btnValider.disabled = true;
-    // console.log(btnValider.disabled);
-    //     } else {
-    //              const btnValider = document.querySelector("#valider-ajout");
-    // btnValider.style.backgroundColor= "rgba(29, 97, 84, 1)";
-    // btnValider.disabled = false;
-
-    // console.log(btnValider.disabled);
-
-    //     }
-    // }  
 }
 
 
