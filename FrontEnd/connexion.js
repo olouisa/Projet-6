@@ -26,6 +26,7 @@ let mail = document.querySelector("#mail");
 let button = document.querySelector("#btn");
 let pass = document.querySelector("#pass");
 
+mail.addEventListener("input", validationMail);
 
 button.addEventListener("click", async function (e) {
     e.preventDefault();
@@ -54,3 +55,16 @@ button.addEventListener("click", async function (e) {
 
 })
 
+function validationMail() {
+    const errorMessage= document.querySelector(".errorMessage");
+    let regex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+    let mail = document.querySelector("#mail");
+
+    if (regex.test(mail.value)) {
+        errorMessage.innerHTML = ""
+    }
+    else {
+        errorMessage.innerHTML = "L'adresse mail n'est pas valide."
+        errorMessage.style.color = "red";
+    }
+}

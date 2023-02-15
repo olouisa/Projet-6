@@ -361,7 +361,7 @@ form.addEventListener("submit", async function (e) {
     console.log(response);
     console.log(response2.json);
 
-});
+    });
 
 // Validation du formulaire
 const btnValider = document.querySelector("#valider-ajout");
